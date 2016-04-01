@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 blablabla
 blabla
+=======
+blablablabla
+
+nouveau test - merge
+>>>>>>> 70f9e24193870c1df0bc476c7db93dbbf2af26df
