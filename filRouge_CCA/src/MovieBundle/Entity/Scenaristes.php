@@ -45,7 +45,7 @@ class Scenaristes
     /**
      * @var string
      *
-     * @ORM\Column(name="bioScenariste", type="text")
+     * @ORM\Column(name="bioScenariste", type="text", nullable=true)
      */
     private $bioScenariste;
 

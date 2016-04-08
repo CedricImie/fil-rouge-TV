@@ -45,7 +45,7 @@ class Realisateurs
     /**
      * @var string
      *
-     * @ORM\Column(name="bioRealisateur", type="text")
+     * @ORM\Column(name="bioRealisateur", type="text", nullable=true)
      */
     private $bioRealisateur;
 
