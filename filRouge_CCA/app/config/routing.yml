@@ -1,4 +1,0 @@
-movie:
-    resource: "@MovieBundle/Controller/"
-    type:     annotation
-    prefix:   /movie
