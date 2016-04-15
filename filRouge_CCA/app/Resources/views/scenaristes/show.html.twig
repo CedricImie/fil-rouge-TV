@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Scenaristes</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ scenariste.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomscenariste</th>
+                <td>{{ scenariste.nomScenariste }}</td>
+            </tr>
+            <tr>
+                <th>Prenomscenariste</th>
+                <td>{{ scenariste.prenomScenariste }}</td>
+            </tr>
+            <tr>
+                <th>Datenaissancescenariste</th>
+                <td>{% if scenariste.dateNaissanceScenariste %}{{ scenariste.dateNaissanceScenariste|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Bioscenariste</th>
+                <td>{{ scenariste.bioScenariste }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('scenaristes_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('scenaristes_edit', { 'id': scenariste.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

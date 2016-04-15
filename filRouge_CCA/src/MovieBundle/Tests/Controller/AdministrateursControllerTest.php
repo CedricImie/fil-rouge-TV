@@ -4,7 +4,7 @@ namespace MovieBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ActeursControllerTest extends WebTestCase
+class AdministrateursControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class ActeursControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/acteurs/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /acteurs/");
+        $crawler = $client->request('GET', '/administrateurs/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /administrateurs/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'moviebundle_acteurs[field_name]'  => 'Test',
+            'moviebundle_administrateurs[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class ActeursControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'moviebundle_acteurs[field_name]'  => 'Foo',
+            'moviebundle_administrateurs[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Saisons</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ saison.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomsaison</th>
+                <td>{{ saison.nomSaison }}</td>
+            </tr>
+            <tr>
+                <th>Nbepisodesaison</th>
+                <td>{{ saison.nbEpisodeSaison }}</td>
+            </tr>
+            <tr>
+                <th>Dureesaison</th>
+                <td>{{ saison.dureeSaison }}</td>
+            </tr>
+            <tr>
+                <th>Notemoyennesaison</th>
+                <td>{{ saison.noteMoyenneSaison }}</td>
+            </tr>
+            <tr>
+                <th>Castingsaison</th>
+                <td>{{ saison.castingSaison }}</td>
+            </tr>
+            <tr>
+                <th>Diffusionsaison</th>
+                <td>{% if saison.diffusionSaison %}{{ saison.diffusionSaison|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('saisons_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('saisons_edit', { 'id': saison.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
