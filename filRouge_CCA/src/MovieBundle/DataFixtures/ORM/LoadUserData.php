@@ -1,10 +1,11 @@
+<?php
 //src/MovieBundle/DataFixtures/ORM/LoadUserData.php
 
 namespace MovieBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use MovieBundleBundle\Entity\User;
+use MovieBundle\Entity\User;
 
 class LoadUserData implements FixtureInterface
 {
@@ -12,7 +13,11 @@ class LoadUserData implements FixtureInterface
     {
         $userAdmin = new User();
         $userAdmin->setUsername('admin');
+        $userAdmin->setPrenomUtilisateur('admin');
+        $userAdmin->setNomUtilisateur('admin');
+        $userAdmin->setSexeUtilisateur('M');
         $userAdmin->setPassword('test');
+        $userAdmin->setEmail('admin@talkseries.fr');
 
         $manager->persist($userAdmin);
         $manager->flush();

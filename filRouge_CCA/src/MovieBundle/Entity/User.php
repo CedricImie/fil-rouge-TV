@@ -34,12 +34,6 @@ class User extends BaseUser
      */
     private $nomUtilisateur;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adresseEmailUtilisateur", type="string", length=255, unique=true)
-     */
-    private $adresseEmailUtilisateur;
 
     /**
      * @var \DateTime
@@ -134,27 +128,6 @@ class User extends BaseUser
     public function getNomUtilisateur()
     {
         return $this->nomUtilisateur;
-    }
-    /**
-     * Set adresseEmailUtilisateur
-     *
-     * @param string $adresseEmailUtilisateur
-     *
-     * @return Utilisateurs
-     */
-    public function setAdresseEmailUtilisateur($adresseEmailUtilisateur)
-    {
-        $this->adresseEmailUtilisateur = $adresseEmailUtilisateur;
-        return $this;
-    }
-    /**
-     * Get adresseEmailUtilisateur
-     *
-     * @return string
-     */
-    public function getAdresseEmailUtilisateur()
-    {
-        return $this->adresseEmailUtilisateur;
     }
     /**
      * Set dateNaissanceUtilisateur

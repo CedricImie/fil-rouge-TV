@@ -17,6 +17,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="MovieBundle">MovieBundle\MovieBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="NurikabeStarRatingBundle">Nurikabe\StarRatingBundle\NurikabeStarRatingBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -301,6 +302,7 @@
     <parameter key="twig.controller.preview_error.class">Symfony\Bundle\TwigBundle\Controller\PreviewErrorController</parameter>
     <parameter key="twig.exception_listener.controller">twig.controller.exception:showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
+      <parameter>NurikabeStarRatingBundle:Form:fields.html.twig</parameter>
       <parameter>form_div_layout.html.twig</parameter>
     </parameter>
     <parameter key="monolog.logger.class">Symfony\Bridge\Monolog\Logger</parameter>
@@ -1168,6 +1170,8 @@
               <argument key="FOS\UserBundle\Form\Type\ChangePasswordFormType">fos_user.change_password.form.type</argument>
               <argument key="fos_user_resetting">fos_user.resetting.form.type</argument>
               <argument key="FOS\UserBundle\Form\Type\ResettingFormType">fos_user.resetting.form.type</argument>
+              <argument key="star_rating">star_rating.form.type</argument>
+              <argument key="Nurikabe\StarRatingBundle\Form\Type\StarRatingType">star_rating.form.type</argument>
             </argument>
             <argument type="collection">
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="collection">
@@ -1869,7 +1873,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5710d996ad6e33.16219169</argument>
+            <argument>5710e633a4cdd8.00012529</argument>
           </service>
         </argument>
       </argument>
@@ -2158,7 +2162,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5710d996ad6e33.16219169</argument>
+            <argument>5710e633a4cdd8.00012529</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2398,6 +2402,7 @@
                 <argument type="service">
                   <service class="Symfony\Bridge\Twig\Form\TwigRendererEngine" public="false">
                     <argument type="collection">
+                      <argument>NurikabeStarRatingBundle:Form:fields.html.twig</argument>
                       <argument>form_div_layout.html.twig</argument>
                     </argument>
                   </service>
@@ -2421,6 +2426,9 @@
             <tag name="twig.extension"/>
           </service>
         </argument>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="star_rating.twig.extension"/>
       </call>
       <call method="addExtension">
         <argument type="service">
@@ -2862,6 +2870,12 @@
       <argument type="service" id="router"/>
       <argument>86400</argument>
     </service>
+    <service id="star_rating.twig.extension" class="Nurikabe\StarRatingBundle\Extension\StarRatingTwigExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="star_rating.form.type" class="Nurikabe\StarRatingBundle\Form\Type\StarRatingType">
+      <tag name="form.type" alias="star_rating"/>
+    </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig" priority="240"/>
       <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
@@ -3183,6 +3197,10 @@
       <call method="addPath">
         <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/nurikabe/star-rating-bundle/Resources/views</argument>
+        <argument>NurikabeStarRating</argument>
       </call>
       <call method="addPath">
         <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>

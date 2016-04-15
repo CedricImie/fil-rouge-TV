@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e14356e57e78ad0e70d3ed90e6549f8",
-    "content-hash": "5dc6ffc780d55df9a5588d77f0741142",
+    "hash": "ab3f8444b322782124d43a90c33d58ad",
+    "content-hash": "0a6436d19767362625b1728574ecb61f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -843,6 +843,16 @@
             "time": "2016-03-08 11:05:28"
         },
         {
+            "name": "fyneworks/star-rating",
+            "version": "4.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fyneworks/star-rating",
+                "reference": "4.11.0"
+            },
+            "type": "library"
+        },
+        {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.2",
             "source": {
@@ -1062,6 +1072,52 @@
                 "psr-3"
             ],
             "time": "2016-04-12 18:29:35"
+        },
+        {
+            "name": "nurikabe/star-rating-bundle",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nurikabe/StarRatingBundle.git",
+                "reference": "259c7afd5f0a532afc5d4a1f2b9d29e56f107d82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nurikabe/StarRatingBundle/zipball/259c7afd5f0a532afc5d4a1f2b9d29e56f107d82",
+                "reference": "259c7afd5f0a532afc5d4a1f2b9d29e56f107d82",
+                "shasum": ""
+            },
+            "require": {
+                "fyneworks/star-rating": "~4.11.0",
+                "php": ">=5.3.2",
+                "symfony/symfony": "~2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Nurikabe\\StarRatingBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Owens",
+                    "email": "eaowens@gmail.com"
+                }
+            ],
+            "description": "Symfony form type and Twig extension for quick integration of FyneWorks' Star Rating widget",
+            "homepage": "http://github.com/nurikabe/StarRatingBundle",
+            "keywords": [
+                "form",
+                "fyneworks",
+                "star-rating",
+                "symfony",
+                "twig"
+            ],
+            "time": "2015-04-10 20:35:08"
         },
         {
             "name": "paragonie/random_compat",

@@ -2470,5 +2470,65 @@
             "Fixture",
             "persistence"
         ]
+    },
+    {
+        "name": "fyneworks/star-rating",
+        "version": "4.11.0",
+        "version_normalized": "4.11.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fyneworks/star-rating",
+            "reference": "4.11.0"
+        },
+        "type": "library",
+        "installation-source": "source"
+    },
+    {
+        "name": "nurikabe/star-rating-bundle",
+        "version": "2.0.1",
+        "version_normalized": "2.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nurikabe/StarRatingBundle.git",
+            "reference": "259c7afd5f0a532afc5d4a1f2b9d29e56f107d82"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nurikabe/StarRatingBundle/zipball/259c7afd5f0a532afc5d4a1f2b9d29e56f107d82",
+            "reference": "259c7afd5f0a532afc5d4a1f2b9d29e56f107d82",
+            "shasum": ""
+        },
+        "require": {
+            "fyneworks/star-rating": "~4.11.0",
+            "php": ">=5.3.2",
+            "symfony/symfony": "~2.1"
+        },
+        "time": "2015-04-10 20:35:08",
+        "type": "symfony-bundle",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Nurikabe\\StarRatingBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Evan Owens",
+                "email": "eaowens@gmail.com"
+            }
+        ],
+        "description": "Symfony form type and Twig extension for quick integration of FyneWorks' Star Rating widget",
+        "homepage": "http://github.com/nurikabe/StarRatingBundle",
+        "keywords": [
+            "form",
+            "fyneworks",
+            "star-rating",
+            "symfony",
+            "twig"
+        ]
     }
 ]
