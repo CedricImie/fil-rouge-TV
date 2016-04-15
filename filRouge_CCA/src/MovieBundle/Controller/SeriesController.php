@@ -137,4 +137,22 @@ class SeriesController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * find all series.
+     *
+     * @Route("/findall", name="series_findall")
+     * @Method("GET")
+     */
+    public function findAllAction(){
+    $em = $this->getDoctrine()->getManager();
+    $query = $em->createQuery('SELECT p'
+            . ' FROM MovieBundle:Series p');
+    
+    $series = $query->getResult();
+    
+    return $this->render('series/index.html.twig', array(
+            'series' => $series,
+            ));
+    }
 }

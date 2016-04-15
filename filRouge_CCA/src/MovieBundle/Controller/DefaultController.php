@@ -13,7 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-    	return new Response("le DefaultController");
-        //return $this->render('MovieBundle:Default:index.html.twig');
+    	// return new Response("le DefaultController");
+        return $this->render('MovieBundle:Default:index.html.twig');
     }
 }
