@@ -4,7 +4,20 @@
 {% block body %}
 {% block header %}
 <div class="header">
-  <h1>Notre site TalkSeries</h1>
+  <div class="row-height">
+    <div class="col-md-10">
+      <div class="logo">
+        <img src="#" alt="Logo du site" />
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="log">
+        <input class="form-control" type="text" name="login" placeholder="Identifiant">
+        <input class="form-control" type="text" name="password" placeholder="Mot de passe">
+        <button class="btn btn-default" type="button">Connexion</button>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
 {% endblock %}
