@@ -63,6 +63,12 @@ class Saisons
      */
     private $diffusionSaison;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Series", inversedBy="saisons")
+     */
+    private $series;
 
     /**
      * Get id
