@@ -1,4 +1,7 @@
 movie:
     resource: "@MovieBundle/Controller/"
     type:     annotation
-    prefix:   /movie
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
