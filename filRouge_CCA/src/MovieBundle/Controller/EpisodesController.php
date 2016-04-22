@@ -1,11 +1,14 @@
 <?php
+
 namespace MovieBundle\Controller;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MovieBundle\Entity\Episodes;
 use MovieBundle\Form\EpisodesType;
+
 /**
  * Episodes controller.
  *
@@ -22,11 +25,14 @@ class EpisodesController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+
         $episodes = $em->getRepository('MovieBundle:Episodes')->findAll();
+
         return $this->render('episodes/index.html.twig', array(
             'episodes' => $episodes,
         ));
     }
+
     /**
      * Creates a new Episodes entity.
      *
@@ -38,17 +44,21 @@ class EpisodesController extends Controller
         $episode = new Episodes();
         $form = $this->createForm('MovieBundle\Form\EpisodesType', $episode);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($episode);
             $em->flush();
+
             return $this->redirectToRoute('episodes_show', array('id' => $episode->getId()));
         }
+
         return $this->render('episodes/new.html.twig', array(
             'episode' => $episode,
             'form' => $form->createView(),
         ));
     }
+
     /**
      * Finds and displays a Episodes entity.
      *
@@ -58,11 +68,13 @@ class EpisodesController extends Controller
     public function showAction(Episodes $episode)
     {
         $deleteForm = $this->createDeleteForm($episode);
+
         return $this->render('episodes/show.html.twig', array(
             'episode' => $episode,
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Displays a form to edit an existing Episodes entity.
      *
@@ -74,18 +86,22 @@ class EpisodesController extends Controller
         $deleteForm = $this->createDeleteForm($episode);
         $editForm = $this->createForm('MovieBundle\Form\EpisodesType', $episode);
         $editForm->handleRequest($request);
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($episode);
             $em->flush();
+
             return $this->redirectToRoute('episodes_edit', array('id' => $episode->getId()));
         }
+
         return $this->render('episodes/edit.html.twig', array(
             'episode' => $episode,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Episodes entity.
      *
@@ -96,13 +112,16 @@ class EpisodesController extends Controller
     {
         $form = $this->createDeleteForm($episode);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($episode);
             $em->flush();
         }
+
         return $this->redirectToRoute('episodes_index');
     }
+
     /**
      * Creates a form to delete a Episodes entity.
      *

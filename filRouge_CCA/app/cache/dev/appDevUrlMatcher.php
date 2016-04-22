@@ -105,6 +105,195 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/a')) {
+            if (0 === strpos($pathinfo, '/acteurs')) {
+                // acteurs_index
+                if (rtrim($pathinfo, '/') === '/acteurs') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_acteurs_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'acteurs_index');
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\ActeursController::indexAction',  '_route' => 'acteurs_index',);
+                }
+                not_acteurs_index:
+
+                // acteurs_new
+                if ($pathinfo === '/acteurs/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_acteurs_new;
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\ActeursController::newAction',  '_route' => 'acteurs_new',);
+                }
+                not_acteurs_new:
+
+                // acteurs_show
+                if (preg_match('#^/acteurs/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_acteurs_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'acteurs_show')), array (  '_controller' => 'MovieBundle\\Controller\\ActeursController::showAction',));
+                }
+                not_acteurs_show:
+
+                // acteurs_edit
+                if (preg_match('#^/acteurs/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_acteurs_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'acteurs_edit')), array (  '_controller' => 'MovieBundle\\Controller\\ActeursController::editAction',));
+                }
+                not_acteurs_edit:
+
+                // acteurs_delete
+                if (preg_match('#^/acteurs/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_acteurs_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'acteurs_delete')), array (  '_controller' => 'MovieBundle\\Controller\\ActeursController::deleteAction',));
+                }
+                not_acteurs_delete:
+
+            }
+
+            if (0 === strpos($pathinfo, '/administrateurs')) {
+                // administrateurs_index
+                if (rtrim($pathinfo, '/') === '/administrateurs') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_administrateurs_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'administrateurs_index');
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\AdministrateursController::indexAction',  '_route' => 'administrateurs_index',);
+                }
+                not_administrateurs_index:
+
+                // administrateurs_new
+                if ($pathinfo === '/administrateurs/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_administrateurs_new;
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\AdministrateursController::newAction',  '_route' => 'administrateurs_new',);
+                }
+                not_administrateurs_new:
+
+                // administrateurs_show
+                if (preg_match('#^/administrateurs/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_administrateurs_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateurs_show')), array (  '_controller' => 'MovieBundle\\Controller\\AdministrateursController::showAction',));
+                }
+                not_administrateurs_show:
+
+                // administrateurs_edit
+                if (preg_match('#^/administrateurs/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_administrateurs_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateurs_edit')), array (  '_controller' => 'MovieBundle\\Controller\\AdministrateursController::editAction',));
+                }
+                not_administrateurs_edit:
+
+                // administrateurs_delete
+                if (preg_match('#^/administrateurs/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_administrateurs_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateurs_delete')), array (  '_controller' => 'MovieBundle\\Controller\\AdministrateursController::deleteAction',));
+                }
+                not_administrateurs_delete:
+
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/commentaires')) {
+            // commentaires_index
+            if (rtrim($pathinfo, '/') === '/commentaires') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_commentaires_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'commentaires_index');
+                }
+
+                return array (  '_controller' => 'MovieBundle\\Controller\\CommentairesController::indexAction',  '_route' => 'commentaires_index',);
+            }
+            not_commentaires_index:
+
+            // commentaires_new
+            if ($pathinfo === '/commentaires/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_commentaires_new;
+                }
+
+                return array (  '_controller' => 'MovieBundle\\Controller\\CommentairesController::newAction',  '_route' => 'commentaires_new',);
+            }
+            not_commentaires_new:
+
+            // commentaires_show
+            if (preg_match('#^/commentaires/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_commentaires_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'commentaires_show')), array (  '_controller' => 'MovieBundle\\Controller\\CommentairesController::showAction',));
+            }
+            not_commentaires_show:
+
+            // commentaires_edit
+            if (preg_match('#^/commentaires/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_commentaires_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'commentaires_edit')), array (  '_controller' => 'MovieBundle\\Controller\\CommentairesController::editAction',));
+            }
+            not_commentaires_edit:
+
+            // commentaires_delete
+            if (preg_match('#^/commentaires/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_commentaires_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'commentaires_delete')), array (  '_controller' => 'MovieBundle\\Controller\\CommentairesController::deleteAction',));
+            }
+            not_commentaires_delete:
+
+        }
+
         // movie_default_index
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
@@ -112,6 +301,381 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             return array (  '_controller' => 'MovieBundle\\Controller\\DefaultController::indexAction',  '_route' => 'movie_default_index',);
+        }
+
+        if (0 === strpos($pathinfo, '/episodes')) {
+            // episodes_index
+            if (rtrim($pathinfo, '/') === '/episodes') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_episodes_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'episodes_index');
+                }
+
+                return array (  '_controller' => 'MovieBundle\\Controller\\EpisodesController::indexAction',  '_route' => 'episodes_index',);
+            }
+            not_episodes_index:
+
+            // episodes_new
+            if ($pathinfo === '/episodes/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_episodes_new;
+                }
+
+                return array (  '_controller' => 'MovieBundle\\Controller\\EpisodesController::newAction',  '_route' => 'episodes_new',);
+            }
+            not_episodes_new:
+
+            // episodes_show
+            if (preg_match('#^/episodes/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_episodes_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'episodes_show')), array (  '_controller' => 'MovieBundle\\Controller\\EpisodesController::showAction',));
+            }
+            not_episodes_show:
+
+            // episodes_edit
+            if (preg_match('#^/episodes/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_episodes_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'episodes_edit')), array (  '_controller' => 'MovieBundle\\Controller\\EpisodesController::editAction',));
+            }
+            not_episodes_edit:
+
+            // episodes_delete
+            if (preg_match('#^/episodes/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_episodes_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'episodes_delete')), array (  '_controller' => 'MovieBundle\\Controller\\EpisodesController::deleteAction',));
+            }
+            not_episodes_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/moderateurs')) {
+            // moderateurs_index
+            if (rtrim($pathinfo, '/') === '/moderateurs') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_moderateurs_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'moderateurs_index');
+                }
+
+                return array (  '_controller' => 'MovieBundle\\Controller\\ModerateursController::indexAction',  '_route' => 'moderateurs_index',);
+            }
+            not_moderateurs_index:
+
+            // moderateurs_new
+            if ($pathinfo === '/moderateurs/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_moderateurs_new;
+                }
+
+                return array (  '_controller' => 'MovieBundle\\Controller\\ModerateursController::newAction',  '_route' => 'moderateurs_new',);
+            }
+            not_moderateurs_new:
+
+            // moderateurs_show
+            if (preg_match('#^/moderateurs/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_moderateurs_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'moderateurs_show')), array (  '_controller' => 'MovieBundle\\Controller\\ModerateursController::showAction',));
+            }
+            not_moderateurs_show:
+
+            // moderateurs_edit
+            if (preg_match('#^/moderateurs/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_moderateurs_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'moderateurs_edit')), array (  '_controller' => 'MovieBundle\\Controller\\ModerateursController::editAction',));
+            }
+            not_moderateurs_edit:
+
+            // moderateurs_delete
+            if (preg_match('#^/moderateurs/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_moderateurs_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'moderateurs_delete')), array (  '_controller' => 'MovieBundle\\Controller\\ModerateursController::deleteAction',));
+            }
+            not_moderateurs_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/realisateurs')) {
+            // realisateurs_index
+            if (rtrim($pathinfo, '/') === '/realisateurs') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_realisateurs_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'realisateurs_index');
+                }
+
+                return array (  '_controller' => 'MovieBundle\\Controller\\RealisateursController::indexAction',  '_route' => 'realisateurs_index',);
+            }
+            not_realisateurs_index:
+
+            // realisateurs_new
+            if ($pathinfo === '/realisateurs/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_realisateurs_new;
+                }
+
+                return array (  '_controller' => 'MovieBundle\\Controller\\RealisateursController::newAction',  '_route' => 'realisateurs_new',);
+            }
+            not_realisateurs_new:
+
+            // realisateurs_show
+            if (preg_match('#^/realisateurs/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_realisateurs_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'realisateurs_show')), array (  '_controller' => 'MovieBundle\\Controller\\RealisateursController::showAction',));
+            }
+            not_realisateurs_show:
+
+            // realisateurs_edit
+            if (preg_match('#^/realisateurs/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_realisateurs_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'realisateurs_edit')), array (  '_controller' => 'MovieBundle\\Controller\\RealisateursController::editAction',));
+            }
+            not_realisateurs_edit:
+
+            // realisateurs_delete
+            if (preg_match('#^/realisateurs/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_realisateurs_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'realisateurs_delete')), array (  '_controller' => 'MovieBundle\\Controller\\RealisateursController::deleteAction',));
+            }
+            not_realisateurs_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/s')) {
+            if (0 === strpos($pathinfo, '/saisons')) {
+                // saisons_index
+                if (rtrim($pathinfo, '/') === '/saisons') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_saisons_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'saisons_index');
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\SaisonsController::indexAction',  '_route' => 'saisons_index',);
+                }
+                not_saisons_index:
+
+                // saisons_new
+                if ($pathinfo === '/saisons/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_saisons_new;
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\SaisonsController::newAction',  '_route' => 'saisons_new',);
+                }
+                not_saisons_new:
+
+                // saisons_show
+                if (preg_match('#^/saisons/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_saisons_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'saisons_show')), array (  '_controller' => 'MovieBundle\\Controller\\SaisonsController::showAction',));
+                }
+                not_saisons_show:
+
+                // saisons_edit
+                if (preg_match('#^/saisons/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_saisons_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'saisons_edit')), array (  '_controller' => 'MovieBundle\\Controller\\SaisonsController::editAction',));
+                }
+                not_saisons_edit:
+
+                // saisons_delete
+                if (preg_match('#^/saisons/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_saisons_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'saisons_delete')), array (  '_controller' => 'MovieBundle\\Controller\\SaisonsController::deleteAction',));
+                }
+                not_saisons_delete:
+
+            }
+
+            if (0 === strpos($pathinfo, '/scenaristes')) {
+                // scenaristes_index
+                if (rtrim($pathinfo, '/') === '/scenaristes') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_scenaristes_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'scenaristes_index');
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\ScenaristesController::indexAction',  '_route' => 'scenaristes_index',);
+                }
+                not_scenaristes_index:
+
+                // scenaristes_new
+                if ($pathinfo === '/scenaristes/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_scenaristes_new;
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\ScenaristesController::newAction',  '_route' => 'scenaristes_new',);
+                }
+                not_scenaristes_new:
+
+                // scenaristes_show
+                if (preg_match('#^/scenaristes/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_scenaristes_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'scenaristes_show')), array (  '_controller' => 'MovieBundle\\Controller\\ScenaristesController::showAction',));
+                }
+                not_scenaristes_show:
+
+                // scenaristes_edit
+                if (preg_match('#^/scenaristes/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_scenaristes_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'scenaristes_edit')), array (  '_controller' => 'MovieBundle\\Controller\\ScenaristesController::editAction',));
+                }
+                not_scenaristes_edit:
+
+                // scenaristes_delete
+                if (preg_match('#^/scenaristes/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_scenaristes_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'scenaristes_delete')), array (  '_controller' => 'MovieBundle\\Controller\\ScenaristesController::deleteAction',));
+                }
+                not_scenaristes_delete:
+
+            }
+
+            if (0 === strpos($pathinfo, '/series')) {
+                // series_index
+                if (rtrim($pathinfo, '/') === '/series') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_series_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'series_index');
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\SeriesController::indexAction',  '_route' => 'series_index',);
+                }
+                not_series_index:
+
+                // series_new
+                if ($pathinfo === '/series/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_series_new;
+                    }
+
+                    return array (  '_controller' => 'MovieBundle\\Controller\\SeriesController::newAction',  '_route' => 'series_new',);
+                }
+                not_series_new:
+
+                // series_show
+                if (preg_match('#^/series/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_series_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'series_show')), array (  '_controller' => 'MovieBundle\\Controller\\SeriesController::showAction',));
+                }
+                not_series_show:
+
+                // series_edit
+                if (preg_match('#^/series/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_series_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'series_edit')), array (  '_controller' => 'MovieBundle\\Controller\\SeriesController::editAction',));
+                }
+                not_series_edit:
+
+                // series_delete
+                if (preg_match('#^/series/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_series_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'series_delete')), array (  '_controller' => 'MovieBundle\\Controller\\SeriesController::deleteAction',));
+                }
+                not_series_delete:
+
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/user')) {

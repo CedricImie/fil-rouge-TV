@@ -1,11 +1,14 @@
 <?php
+
 namespace MovieBundle\Controller;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MovieBundle\Entity\Acteurs;
 use MovieBundle\Form\ActeursType;
+
 /**
  * Acteurs controller.
  *
@@ -22,11 +25,14 @@ class ActeursController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+
         $acteurs = $em->getRepository('MovieBundle:Acteurs')->findAll();
+
         return $this->render('acteurs/index.html.twig', array(
             'acteurs' => $acteurs,
         ));
     }
+
     /**
      * Creates a new Acteurs entity.
      *
@@ -38,17 +44,21 @@ class ActeursController extends Controller
         $acteur = new Acteurs();
         $form = $this->createForm('MovieBundle\Form\ActeursType', $acteur);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($acteur);
             $em->flush();
+
             return $this->redirectToRoute('acteurs_show', array('id' => $acteur->getId()));
         }
+
         return $this->render('acteurs/new.html.twig', array(
             'acteur' => $acteur,
             'form' => $form->createView(),
         ));
     }
+
     /**
      * Finds and displays a Acteurs entity.
      *
@@ -58,11 +68,13 @@ class ActeursController extends Controller
     public function showAction(Acteurs $acteur)
     {
         $deleteForm = $this->createDeleteForm($acteur);
+
         return $this->render('acteurs/show.html.twig', array(
             'acteur' => $acteur,
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Displays a form to edit an existing Acteurs entity.
      *
@@ -74,18 +86,22 @@ class ActeursController extends Controller
         $deleteForm = $this->createDeleteForm($acteur);
         $editForm = $this->createForm('MovieBundle\Form\ActeursType', $acteur);
         $editForm->handleRequest($request);
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($acteur);
             $em->flush();
+
             return $this->redirectToRoute('acteurs_edit', array('id' => $acteur->getId()));
         }
+
         return $this->render('acteurs/edit.html.twig', array(
             'acteur' => $acteur,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Acteurs entity.
      *
@@ -96,13 +112,16 @@ class ActeursController extends Controller
     {
         $form = $this->createDeleteForm($acteur);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($acteur);
             $em->flush();
         }
+
         return $this->redirectToRoute('acteurs_index');
     }
+
     /**
      * Creates a form to delete a Acteurs entity.
      *
