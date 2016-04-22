@@ -69,6 +69,12 @@ class Episodes
      * @ORM\Column(name="diffusionEpisode", type="datetime")
      */
     private $diffusionEpisode;
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="User", mappedBy="episodes")
+     */
+    private $users;
 
 
     /**
