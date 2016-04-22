@@ -1,6 +1,7 @@
 <?php
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 namespace MovieBundle\Controller;
 
@@ -12,6 +13,11 @@ namespace MovieBundle\Controller;
 namespace MovieBundle\Controller;
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+namespace MovieBundle\Controller;
+
+>>>>>>> brancheAnthony
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -20,12 +26,16 @@ use MovieBundle\Entity\Series;
 use MovieBundle\Form\SeriesType;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+>>>>>>> brancheAnthony
 /**
  * Series controller.
  *
@@ -44,6 +54,7 @@ class SeriesController extends Controller
         $em = $this->getDoctrine()->getManager();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         $series = $em->getRepository('MovieBundle:Series')->findAll();
 
@@ -55,18 +66,27 @@ class SeriesController extends Controller
         $series = $em->getRepository('MovieBundle:Series')->findAll();
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+        $series = $em->getRepository('MovieBundle:Series')->findAll();
+
+>>>>>>> brancheAnthony
         return $this->render('series/index.html.twig', array(
             'series' => $series,
         ));
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+>>>>>>> brancheAnthony
     /**
      * Creates a new Series entity.
      *
@@ -80,18 +100,23 @@ class SeriesController extends Controller
         $form->handleRequest($request);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+>>>>>>> brancheAnthony
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($series);
             $em->flush();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             return $this->redirectToRoute('series_show', array('id' => $series->getId()));
         }
@@ -101,11 +126,16 @@ class SeriesController extends Controller
         }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
+=======
+>>>>>>> brancheAnthony
 
             return $this->redirectToRoute('series_show', array('id' => $series->getId()));
         }
 
+<<<<<<< HEAD
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+>>>>>>> brancheAnthony
         return $this->render('series/new.html.twig', array(
             'series' => $series,
             'form' => $form->createView(),
@@ -113,12 +143,16 @@ class SeriesController extends Controller
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+>>>>>>> brancheAnthony
     /**
      * Finds and displays a Series entity.
      *
@@ -130,12 +164,16 @@ class SeriesController extends Controller
         $deleteForm = $this->createDeleteForm($series);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+>>>>>>> brancheAnthony
         return $this->render('series/show.html.twig', array(
             'series' => $series,
             'delete_form' => $deleteForm->createView(),
@@ -143,12 +181,16 @@ class SeriesController extends Controller
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+>>>>>>> brancheAnthony
     /**
      * Displays a form to edit an existing Series entity.
      *
@@ -162,18 +204,23 @@ class SeriesController extends Controller
         $editForm->handleRequest($request);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+>>>>>>> brancheAnthony
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($series);
             $em->flush();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
 
@@ -187,6 +234,12 @@ class SeriesController extends Controller
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+            return $this->redirectToRoute('series_edit', array('id' => $series->getId()));
+        }
+
+>>>>>>> brancheAnthony
         return $this->render('series/edit.html.twig', array(
             'series' => $series,
             'edit_form' => $editForm->createView(),
@@ -195,12 +248,16 @@ class SeriesController extends Controller
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+>>>>>>> brancheAnthony
     /**
      * Deletes a Series entity.
      *
@@ -213,12 +270,16 @@ class SeriesController extends Controller
         $form->handleRequest($request);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
 
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+
+>>>>>>> brancheAnthony
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($series);
@@ -226,6 +287,7 @@ class SeriesController extends Controller
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         return $this->redirectToRoute('series_index');
     }
@@ -235,11 +297,16 @@ class SeriesController extends Controller
     }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 =======
+=======
+>>>>>>> brancheAnthony
 
         return $this->redirectToRoute('series_index');
     }
 
+<<<<<<< HEAD
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+>>>>>>> brancheAnthony
     /**
      * Creates a form to delete a Series entity.
      *
@@ -255,6 +322,7 @@ class SeriesController extends Controller
             ->getForm()
         ;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -285,3 +353,6 @@ class SeriesController extends Controller
 =======
 }
 >>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
+=======
+}
+>>>>>>> brancheAnthony

@@ -71,6 +71,13 @@ class User extends BaseUser
      */
     private $twitterUtilisateur;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Episodes", inversedBy="users")
+     */
+    private $episodes;
+
     public function __construct()
     {
         parent::__construct();
