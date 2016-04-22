@@ -84,6 +84,12 @@ class Series
      */
     private $diffusionSerie;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Saisons", MappedBy="series")
+     */
+    private $series;
 
     /**
      * Get id
