@@ -1,14 +1,21 @@
 <?php
+<<<<<<< HEAD
 
 namespace MovieBundle\Controller;
 
+=======
+namespace MovieBundle\Controller;
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MovieBundle\Entity\Saisons;
 use MovieBundle\Form\SaisonsType;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 /**
  * Saisons controller.
  *
@@ -25,14 +32,21 @@ class SaisonsController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+<<<<<<< HEAD
 
         $saisons = $em->getRepository('MovieBundle:Saisons')->findAll();
 
+=======
+        $saisons = $em->getRepository('MovieBundle:Saisons')->findAll();
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         return $this->render('saisons/index.html.twig', array(
             'saisons' => $saisons,
         ));
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Creates a new Saisons entity.
      *
@@ -44,21 +58,32 @@ class SaisonsController extends Controller
         $saison = new Saisons();
         $form = $this->createForm('MovieBundle\Form\SaisonsType', $saison);
         $form->handleRequest($request);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($saison);
             $em->flush();
+<<<<<<< HEAD
 
             return $this->redirectToRoute('saisons_show', array('id' => $saison->getId()));
         }
 
+=======
+            return $this->redirectToRoute('saisons_show', array('id' => $saison->getId()));
+        }
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         return $this->render('saisons/new.html.twig', array(
             'saison' => $saison,
             'form' => $form->createView(),
         ));
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Finds and displays a Saisons entity.
      *
@@ -68,13 +93,19 @@ class SaisonsController extends Controller
     public function showAction(Saisons $saison)
     {
         $deleteForm = $this->createDeleteForm($saison);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         return $this->render('saisons/show.html.twig', array(
             'saison' => $saison,
             'delete_form' => $deleteForm->createView(),
         ));
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Displays a form to edit an existing Saisons entity.
      *
@@ -86,22 +117,33 @@ class SaisonsController extends Controller
         $deleteForm = $this->createDeleteForm($saison);
         $editForm = $this->createForm('MovieBundle\Form\SaisonsType', $saison);
         $editForm->handleRequest($request);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($saison);
             $em->flush();
+<<<<<<< HEAD
 
             return $this->redirectToRoute('saisons_edit', array('id' => $saison->getId()));
         }
 
+=======
+            return $this->redirectToRoute('saisons_edit', array('id' => $saison->getId()));
+        }
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         return $this->render('saisons/edit.html.twig', array(
             'saison' => $saison,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Deletes a Saisons entity.
      *
@@ -112,16 +154,24 @@ class SaisonsController extends Controller
     {
         $form = $this->createDeleteForm($saison);
         $form->handleRequest($request);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($saison);
             $em->flush();
         }
+<<<<<<< HEAD
 
         return $this->redirectToRoute('saisons_index');
     }
 
+=======
+        return $this->redirectToRoute('saisons_index');
+    }
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Creates a form to delete a Saisons entity.
      *
@@ -137,4 +187,8 @@ class SaisonsController extends Controller
             ->getForm()
         ;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82

@@ -1,14 +1,21 @@
 <?php
+<<<<<<< HEAD
 
 namespace MovieBundle\Controller;
 
+=======
+namespace MovieBundle\Controller;
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MovieBundle\Entity\Moderateurs;
 use MovieBundle\Form\ModerateursType;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
 /**
  * Moderateurs controller.
  *
@@ -25,14 +32,21 @@ class ModerateursController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+<<<<<<< HEAD
 
         $moderateurs = $em->getRepository('MovieBundle:Moderateurs')->findAll();
 
+=======
+        $moderateurs = $em->getRepository('MovieBundle:Moderateurs')->findAll();
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         return $this->render('moderateurs/index.html.twig', array(
             'moderateurs' => $moderateurs,
         ));
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Creates a new Moderateurs entity.
      *
@@ -44,21 +58,32 @@ class ModerateursController extends Controller
         $moderateur = new Moderateurs();
         $form = $this->createForm('MovieBundle\Form\ModerateursType', $moderateur);
         $form->handleRequest($request);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($moderateur);
             $em->flush();
+<<<<<<< HEAD
 
             return $this->redirectToRoute('moderateurs_show', array('id' => $moderateur->getId()));
         }
 
+=======
+            return $this->redirectToRoute('moderateurs_show', array('id' => $moderateur->getId()));
+        }
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         return $this->render('moderateurs/new.html.twig', array(
             'moderateur' => $moderateur,
             'form' => $form->createView(),
         ));
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Finds and displays a Moderateurs entity.
      *
@@ -68,13 +93,19 @@ class ModerateursController extends Controller
     public function showAction(Moderateurs $moderateur)
     {
         $deleteForm = $this->createDeleteForm($moderateur);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         return $this->render('moderateurs/show.html.twig', array(
             'moderateur' => $moderateur,
             'delete_form' => $deleteForm->createView(),
         ));
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Displays a form to edit an existing Moderateurs entity.
      *
@@ -86,22 +117,33 @@ class ModerateursController extends Controller
         $deleteForm = $this->createDeleteForm($moderateur);
         $editForm = $this->createForm('MovieBundle\Form\ModerateursType', $moderateur);
         $editForm->handleRequest($request);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($moderateur);
             $em->flush();
+<<<<<<< HEAD
 
             return $this->redirectToRoute('moderateurs_edit', array('id' => $moderateur->getId()));
         }
 
+=======
+            return $this->redirectToRoute('moderateurs_edit', array('id' => $moderateur->getId()));
+        }
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         return $this->render('moderateurs/edit.html.twig', array(
             'moderateur' => $moderateur,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Deletes a Moderateurs entity.
      *
@@ -112,16 +154,24 @@ class ModerateursController extends Controller
     {
         $form = $this->createDeleteForm($moderateur);
         $form->handleRequest($request);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($moderateur);
             $em->flush();
         }
+<<<<<<< HEAD
 
         return $this->redirectToRoute('moderateurs_index');
     }
 
+=======
+        return $this->redirectToRoute('moderateurs_index');
+    }
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
     /**
      * Creates a form to delete a Moderateurs entity.
      *
@@ -137,4 +187,8 @@ class ModerateursController extends Controller
             ->getForm()
         ;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 90824d8da03badc808f50219515998bc0f429b82
