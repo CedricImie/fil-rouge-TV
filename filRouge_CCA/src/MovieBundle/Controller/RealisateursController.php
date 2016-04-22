@@ -1,11 +1,17 @@
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 namespace MovieBundle\Controller;
 
 =======
 namespace MovieBundle\Controller;
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+namespace MovieBundle\Controller;
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -13,9 +19,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MovieBundle\Entity\Realisateurs;
 use MovieBundle\Form\RealisateursType;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
 /**
  * Realisateurs controller.
  *
@@ -33,20 +43,30 @@ class RealisateursController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         $realisateurs = $em->getRepository('MovieBundle:Realisateurs')->findAll();
 
 =======
         $realisateurs = $em->getRepository('MovieBundle:Realisateurs')->findAll();
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+        $realisateurs = $em->getRepository('MovieBundle:Realisateurs')->findAll();
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         return $this->render('realisateurs/index.html.twig', array(
             'realisateurs' => $realisateurs,
         ));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Creates a new Realisateurs entity.
      *
@@ -59,13 +79,18 @@ class RealisateursController extends Controller
         $form = $this->createForm('MovieBundle\Form\RealisateursType', $realisateur);
         $form->handleRequest($request);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($realisateur);
             $em->flush();
+<<<<<<< HEAD
 <<<<<<< HEAD
 
             return $this->redirectToRoute('realisateurs_show', array('id' => $realisateur->getId()));
@@ -75,15 +100,25 @@ class RealisateursController extends Controller
             return $this->redirectToRoute('realisateurs_show', array('id' => $realisateur->getId()));
         }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+            return $this->redirectToRoute('realisateurs_show', array('id' => $realisateur->getId()));
+        }
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         return $this->render('realisateurs/new.html.twig', array(
             'realisateur' => $realisateur,
             'form' => $form->createView(),
         ));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Finds and displays a Realisateurs entity.
      *
@@ -94,18 +129,26 @@ class RealisateursController extends Controller
     {
         $deleteForm = $this->createDeleteForm($realisateur);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         return $this->render('realisateurs/show.html.twig', array(
             'realisateur' => $realisateur,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Displays a form to edit an existing Realisateurs entity.
      *
@@ -118,22 +161,32 @@ class RealisateursController extends Controller
         $editForm = $this->createForm('MovieBundle\Form\RealisateursType', $realisateur);
         $editForm->handleRequest($request);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($realisateur);
             $em->flush();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
 
             return $this->redirectToRoute('realisateurs_edit', array('id' => $realisateur->getId()));
         }
 
+<<<<<<< HEAD
 =======
             return $this->redirectToRoute('realisateurs_edit', array('id' => $realisateur->getId()));
         }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         return $this->render('realisateurs/edit.html.twig', array(
             'realisateur' => $realisateur,
             'edit_form' => $editForm->createView(),
@@ -141,9 +194,13 @@ class RealisateursController extends Controller
         ));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Deletes a Realisateurs entity.
      *
@@ -155,14 +212,19 @@ class RealisateursController extends Controller
         $form = $this->createDeleteForm($realisateur);
         $form->handleRequest($request);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($realisateur);
             $em->flush();
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
         return $this->redirectToRoute('realisateurs_index');
@@ -172,6 +234,12 @@ class RealisateursController extends Controller
         return $this->redirectToRoute('realisateurs_index');
     }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+        return $this->redirectToRoute('realisateurs_index');
+    }
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Creates a form to delete a Realisateurs entity.
      *
@@ -188,7 +256,11 @@ class RealisateursController extends Controller
         ;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+}
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63

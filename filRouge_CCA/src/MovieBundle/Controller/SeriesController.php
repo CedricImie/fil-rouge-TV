@@ -1,11 +1,17 @@
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 namespace MovieBundle\Controller;
 
 =======
 namespace MovieBundle\Controller;
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+namespace MovieBundle\Controller;
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -13,9 +19,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MovieBundle\Entity\Series;
 use MovieBundle\Form\SeriesType;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
 /**
  * Series controller.
  *
@@ -33,20 +43,30 @@ class SeriesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         $series = $em->getRepository('MovieBundle:Series')->findAll();
 
 =======
         $series = $em->getRepository('MovieBundle:Series')->findAll();
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+        $series = $em->getRepository('MovieBundle:Series')->findAll();
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         return $this->render('series/index.html.twig', array(
             'series' => $series,
         ));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Creates a new Series entity.
      *
@@ -59,13 +79,18 @@ class SeriesController extends Controller
         $form = $this->createForm('MovieBundle\Form\SeriesType', $series);
         $form->handleRequest($request);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($series);
             $em->flush();
+<<<<<<< HEAD
 <<<<<<< HEAD
 
             return $this->redirectToRoute('series_show', array('id' => $series->getId()));
@@ -75,15 +100,25 @@ class SeriesController extends Controller
             return $this->redirectToRoute('series_show', array('id' => $series->getId()));
         }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+            return $this->redirectToRoute('series_show', array('id' => $series->getId()));
+        }
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         return $this->render('series/new.html.twig', array(
             'series' => $series,
             'form' => $form->createView(),
         ));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Finds and displays a Series entity.
      *
@@ -94,18 +129,26 @@ class SeriesController extends Controller
     {
         $deleteForm = $this->createDeleteForm($series);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         return $this->render('series/show.html.twig', array(
             'series' => $series,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Displays a form to edit an existing Series entity.
      *
@@ -118,22 +161,32 @@ class SeriesController extends Controller
         $editForm = $this->createForm('MovieBundle\Form\SeriesType', $series);
         $editForm->handleRequest($request);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($series);
             $em->flush();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
 
             return $this->redirectToRoute('series_edit', array('id' => $series->getId()));
         }
 
+<<<<<<< HEAD
 =======
             return $this->redirectToRoute('series_edit', array('id' => $series->getId()));
         }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         return $this->render('series/edit.html.twig', array(
             'series' => $series,
             'edit_form' => $editForm->createView(),
@@ -141,9 +194,13 @@ class SeriesController extends Controller
         ));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Deletes a Series entity.
      *
@@ -155,14 +212,19 @@ class SeriesController extends Controller
         $form = $this->createDeleteForm($series);
         $form->handleRequest($request);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($series);
             $em->flush();
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
         return $this->redirectToRoute('series_index');
@@ -172,6 +234,12 @@ class SeriesController extends Controller
         return $this->redirectToRoute('series_index');
     }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+
+        return $this->redirectToRoute('series_index');
+    }
+
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
     /**
      * Creates a form to delete a Series entity.
      *
@@ -187,6 +255,7 @@ class SeriesController extends Controller
             ->getForm()
         ;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -213,3 +282,6 @@ class SeriesController extends Controller
 =======
 }
 >>>>>>> 90824d8da03badc808f50219515998bc0f429b82
+=======
+}
+>>>>>>> 9584d6057f286ae84d18ab88af1ad79f0970ee63
