@@ -4,8 +4,13 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "hash": "ab3f8444b322782124d43a90c33d58ad",
     "content-hash": "0a6436d19767362625b1728574ecb61f",
+=======
+    "hash": "8d29dcd7608474797aa555be2e856c21",
+    "content-hash": "fd6a4305d2587436e462ef9dd426541a",
+>>>>>>> 1edfc541a638e850ea93c04d4ea7ed40bf081b43
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -841,6 +846,7 @@
                 "User management"
             ],
             "time": "2016-03-08 11:05:28"
+<<<<<<< HEAD
         },
         {
             "name": "fyneworks/star-rating",
@@ -851,6 +857,8 @@
                 "reference": "4.11.0"
             },
             "type": "library"
+=======
+>>>>>>> 1edfc541a638e850ea93c04d4ea7ed40bf081b43
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1072,6 +1080,7 @@
                 "psr-3"
             ],
             "time": "2016-04-12 18:29:35"
+<<<<<<< HEAD
         },
         {
             "name": "nurikabe/star-rating-bundle",
@@ -1118,6 +1127,8 @@
                 "twig"
             ],
             "time": "2015-04-10 20:35:08"
+=======
+>>>>>>> 1edfc541a638e850ea93c04d4ea7ed40bf081b43
         },
         {
             "name": "paragonie/random_compat",

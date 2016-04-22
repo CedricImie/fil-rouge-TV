@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Moderateurs</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ moderateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Datedebutmoderateur</th>
+                <td>{% if moderateur.dateDebutModerateur %}{{ moderateur.dateDebutModerateur|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefinmoderateur</th>
+                <td>{% if moderateur.dateFinModerateur %}{{ moderateur.dateFinModerateur|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('moderateurs_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('moderateurs_edit', { 'id': moderateur.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

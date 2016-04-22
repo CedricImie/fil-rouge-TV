@@ -6,9 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class UtilisateursType extends AbstractType
 {
-<<<<<<< HEAD
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -29,16 +28,13 @@ class UserType extends AbstractType
         ;
     }
     
-=======
-
->>>>>>> 1edfc541a638e850ea93c04d4ea7ed40bf081b43
     /**
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MovieBundle\Entity\User'
+            'data_class' => 'MovieBundle\Entity\Utilisateurs'
         ));
     }
 }

@@ -17,7 +17,10 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new MovieBundle\MovieBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+<<<<<<< HEAD
             new Nurikabe\StarRatingBundle\NurikabeStarRatingBundle(),
+=======
+>>>>>>> 1edfc541a638e850ea93c04d4ea7ed40bf081b43
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

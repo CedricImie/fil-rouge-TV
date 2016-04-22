@@ -1,66 +1,63 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>User</h1>
+    <h1>Utilisateurs</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ user.id }}</td>
+                <td>{{ utilisateur.id }}</td>
             </tr>
-<<<<<<< HEAD
             <tr>
                 <th>Pseudoutilisateur</th>
-                <td>{{ user.pseudoUtilisateur }}</td>
+                <td>{{ utilisateur.pseudoUtilisateur }}</td>
             </tr>
             <tr>
                 <th>Prenomutilisateur</th>
-                <td>{{ user.prenomUtilisateur }}</td>
+                <td>{{ utilisateur.prenomUtilisateur }}</td>
             </tr>
             <tr>
                 <th>Nomutilisateur</th>
-                <td>{{ user.nomUtilisateur }}</td>
+                <td>{{ utilisateur.nomUtilisateur }}</td>
             </tr>
             <tr>
                 <th>Adresseemailutilisateur</th>
-                <td>{{ user.adresseEmailUtilisateur }}</td>
+                <td>{{ utilisateur.adresseEmailUtilisateur }}</td>
             </tr>
             <tr>
                 <th>Datenaissanceutilisateur</th>
-                <td>{% if user.dateNaissanceUtilisateur %}{{ user.dateNaissanceUtilisateur|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if utilisateur.dateNaissanceUtilisateur %}{{ utilisateur.dateNaissanceUtilisateur|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Photoprofilutilisateur</th>
-                <td>{{ user.photoProfilUtilisateur }}</td>
+                <td>{{ utilisateur.photoProfilUtilisateur }}</td>
             </tr>
             <tr>
                 <th>Motdepasseutilisateur</th>
-                <td>{{ user.motDePasseUtilisateur }}</td>
+                <td>{{ utilisateur.motDePasseUtilisateur }}</td>
             </tr>
             <tr>
                 <th>Sexeutilisateur</th>
-                <td>{{ user.sexeUtilisateur }}</td>
+                <td>{{ utilisateur.sexeUtilisateur }}</td>
             </tr>
             <tr>
                 <th>Facebookutilisateur</th>
-                <td>{{ user.facebookUtilisateur }}</td>
+                <td>{{ utilisateur.facebookUtilisateur }}</td>
             </tr>
             <tr>
                 <th>Twitterutilisateur</th>
-                <td>{{ user.twitterUtilisateur }}</td>
+                <td>{{ utilisateur.twitterUtilisateur }}</td>
             </tr>
-=======
->>>>>>> 1edfc541a638e850ea93c04d4ea7ed40bf081b43
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
+            <a href="{{ path('utilisateurs_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
+            <a href="{{ path('utilisateurs_edit', { 'id': utilisateur.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
