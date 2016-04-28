@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.root_dir">/home/imie/public_html/fil_rouge/filRouge_CCA/app</parameter>
+    <parameter key="kernel.root_dir">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev</parameter>
-    <parameter key="kernel.logs_dir">/home/imie/public_html/fil_rouge/filRouge_CCA/app/logs</parameter>
+    <parameter key="kernel.cache_dir">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev</parameter>
+    <parameter key="kernel.logs_dir">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
@@ -105,7 +105,7 @@
       <parameter key="cookie_httponly">true</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/sessions</parameter>
+    <parameter key="session.save_path">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/sessions</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="security.secure_random.class">Symfony\Component\Security\Core\Util\SecureRandom</parameter>
     <parameter key="form.resolved_type_factory.class">Symfony\Component\Form\ResolvedFormTypeFactory</parameter>
@@ -162,7 +162,7 @@
     <parameter key="data_collector.form.extractor.class">Symfony\Component\Form\Extension\DataCollector\FormDataExtractor</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/profiler</parameter>
     <parameter key="profiler.storage.username"></parameter>
     <parameter key="profiler.storage.password"></parameter>
     <parameter key="profiler.storage.lifetime">86400</parameter>
@@ -186,7 +186,7 @@
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">/home/imie/public_html/fil_rouge/filRouge_CCA/app/config/routing_dev.yml</parameter>
+    <parameter key="router.resource">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/config/routing_dev.yml</parameter>
     <parameter key="router.cache_class_prefix">appDev</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
@@ -197,7 +197,7 @@
     <parameter key="debug.stopwatch.class">Symfony\Component\Stopwatch\Stopwatch</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
     <parameter key="debug.event_dispatcher.class">Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher</parameter>
-    <parameter key="debug.container.dump">/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/appDevDebugProjectContainer.xml</parameter>
+    <parameter key="debug.container.dump">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="debug.controller_resolver.class">Symfony\Component\HttpKernel\Controller\TraceableControllerResolver</parameter>
     <parameter key="security.context.class">Symfony\Component\Security\Core\SecurityContext</parameter>
     <parameter key="security.user_checker.class">Symfony\Component\Security\Core\User\UserChecker</parameter>
@@ -388,7 +388,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -506,7 +506,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -673,7 +673,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/Resources</argument>
+                <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/Resources</argument>
               </service>
             </argument>
             <argument type="service" id="templating.locator"/>
@@ -700,7 +700,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/Resources</argument>
+                <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/Resources</argument>
               </service>
             </argument>
             <argument type="collection"/>
@@ -713,7 +713,7 @@
             <argument type="service">
               <service class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
                 <argument type="service" id="kernel"/>
-                <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app</argument>
+                <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app</argument>
                 <argument type="collection"/>
               </service>
             </argument>
@@ -744,7 +744,7 @@
     <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
     <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
       <argument type="service" id="kernel"/>
-      <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/Resources</argument>
+      <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/Resources</argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
       <argument>ThisTokenIsNotSoSecretChangeIt</argument>
@@ -864,7 +864,7 @@
         </argument>
       </argument>
       <argument type="collection">
-        <argument key="cache_dir">/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/translations</argument>
+        <argument key="cache_dir">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/translations</argument>
         <argument key="debug">true</argument>
       </argument>
       <argument type="collection"/>
@@ -1375,7 +1375,7 @@
     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
-      <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev</argument>
+      <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev</argument>
     </service>
     <service id="templating.helper.assets" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper">
       <tag name="templating.helper" alias="assets"/>
@@ -1414,8 +1414,8 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</argument>
-          <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/friendsofsymfony/user-bundle/Resources/config/validation.xml</argument>
+          <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</argument>
+          <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/friendsofsymfony/user-bundle/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1436,7 +1436,7 @@
         </argument>
       </call>
       <call method="addXmlMapping">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/friendsofsymfony/user-bundle/DependencyInjection/Compiler/../../Resources/config/storage-validation/orm.xml</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/friendsofsymfony/user-bundle/DependencyInjection/Compiler/../../Resources/config/storage-validation/orm.xml</argument>
       </call>
       <factory class="Symfony\Component\Validator\Validation" method="createValidatorBuilder"/>
     </service>
@@ -1457,7 +1457,7 @@
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service">
         <service class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-          <argument>file:/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/profiler</argument>
+          <argument>file:/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/profiler</argument>
           <argument></argument>
           <argument></argument>
           <argument>86400</argument>
@@ -1873,7 +1873,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>571a1ebeaa8b47.76526502</argument>
+            <argument>571a3684b863e8.20572046</argument>
           </service>
         </argument>
       </argument>
@@ -2162,7 +2162,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>571a1ebeaa8b47.76526502</argument>
+            <argument>571a3684b863e8.20572046</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2265,7 +2265,7 @@
           <argument>form_div_layout.html.twig</argument>
         </argument>
         <argument key="autoescape">filename</argument>
-        <argument key="cache">/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/twig</argument>
+        <argument key="cache">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
@@ -2340,7 +2340,7 @@
           <service class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
             <tag name="twig.extension"/>
             <argument>null</argument>
-            <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app</argument>
+            <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app</argument>
             <argument>UTF-8</argument>
           </service>
         </argument>
@@ -2498,7 +2498,7 @@
       <argument>twig.controller.exception:showAction</argument>
     </service>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
-      <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/logs/dev.log</argument>
+      <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/logs/dev.log</argument>
       <argument>100</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -2626,17 +2626,17 @@
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_c6f4cd821a013615d75927892ebc02400fd2ab724286e7a326d89343a13943a8</argument>
+        <argument>sf2orm_default_f25b6a1710d7bc452ee5fa88a0f50ce2829f17692e7f5cfbab8a45b34d41c3ca</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_result_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_c6f4cd821a013615d75927892ebc02400fd2ab724286e7a326d89343a13943a8</argument>
+        <argument>sf2orm_default_f25b6a1710d7bc452ee5fa88a0f50ce2829f17692e7f5cfbab8a45b34d41c3ca</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_query_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_c6f4cd821a013615d75927892ebc02400fd2ab724286e7a326d89343a13943a8</argument>
+        <argument>sf2orm_default_f25b6a1710d7bc452ee5fa88a0f50ce2829f17692e7f5cfbab8a45b34d41c3ca</argument>
       </call>
     </service>
     <service id="doctrine.orm.default_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
@@ -2673,7 +2673,7 @@
                     <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
-                        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/src/MovieBundle/Entity</argument>
+                        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/src/MovieBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2685,7 +2685,7 @@
                       <argument type="service">
                         <service class="Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator">
                           <argument type="collection">
-                            <argument key="/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/friendsofsymfony/user-bundle/Resources/config/doctrine-mapping">FOS\UserBundle\Model</argument>
+                            <argument key="/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/friendsofsymfony/user-bundle/Resources/config/doctrine-mapping">FOS\UserBundle\Model</argument>
                           </argument>
                           <argument>.orm.xml</argument>
                         </service>
@@ -2698,7 +2698,7 @@
             </argument>
           </call>
           <call method="setProxyDir">
-            <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/doctrine/orm/Proxies</argument>
+            <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/doctrine/orm/Proxies</argument>
           </call>
           <call method="setProxyNamespace">
             <argument>Proxies</argument>
@@ -3106,7 +3106,7 @@
       <argument>true</argument>
     </service>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
-      <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/sessions</argument>
+      <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
@@ -3121,9 +3121,9 @@
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/config/routing_dev.yml</argument>
+      <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/config/routing_dev.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev</argument>
+        <argument key="cache_dir">/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -3147,7 +3147,7 @@
       </argument>
       <argument type="service">
         <service class="Doctrine\Common\Cache\FilesystemCache" public="false">
-          <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/cache/dev/annotations</argument>
+          <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/cache/dev/annotations</argument>
         </service>
       </argument>
       <argument>true</argument>
@@ -3171,50 +3171,50 @@
       <argument type="service" id="templating.locator"/>
       <argument type="service" id="templating.name_parser"/>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/src/MovieBundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/src/MovieBundle/Resources/views</argument>
         <argument>Movie</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/nurikabe/star-rating-bundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/nurikabe/star-rating-bundle/Resources/views</argument>
         <argument>NurikabeStarRating</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/app/Resources/views</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/app/Resources/views</argument>
       </call>
       <call method="addPath">
-        <argument>/home/imie/public_html/fil_rouge/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
+        <argument>/media/imie/a40709c6-911b-4180-8b84-3bc61fe0a4ee1/public_html/fil_rouge_tv/filRouge_CCA/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
       </call>
     </service>
     <service id="logger" class="Symfony\Bridge\Monolog\Logger">
