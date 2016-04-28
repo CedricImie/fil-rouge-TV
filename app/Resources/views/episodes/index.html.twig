@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Episodes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomepisode</th>
+                <th>Resumeepisode</th>
+                <th>Dureeepisode</th>
+                <th>Dateepisode</th>
+                <th>Notemoyenneepisode</th>
+                <th>Classificationepisode</th>
+                <th>Diffusionepisode</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for episode in episodes %}
+            <tr>
+                <td><a href="{{ path('episodes_show', { 'id': episode.id }) }}">{{ episode.id }}</a></td>
+                <td>{{ episode.nomEpisode }}</td>
+                <td>{{ episode.resumeEpisode }}</td>
+                <td>{{ episode.dureeEpisode }}</td>
+                <td>{% if episode.dateEpisode %}{{ episode.dateEpisode|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ episode.noteMoyenneEpisode }}</td>
+                <td>{{ episode.classificationEpisode }}</td>
+                <td>{% if episode.diffusionEpisode %}{{ episode.diffusionEpisode|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('episodes_show', { 'id': episode.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('episodes_edit', { 'id': episode.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('episodes_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
