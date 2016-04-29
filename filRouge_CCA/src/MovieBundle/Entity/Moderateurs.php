@@ -35,6 +35,27 @@ class Moderateurs
      */
     private $dateFinModerateur;
 
+    /**
+    * @var string
+    *
+    * @ORM\ManyToOne(targetEntity="Administrateurs", inversedBy="moderateurs")
+    */
+    private $administrateurs;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Commentaires")
+    */
+    private $commentaires;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="User")
+    */
+    private $users;
+
 
     /**
      * Get id

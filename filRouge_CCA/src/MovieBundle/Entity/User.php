@@ -49,27 +49,20 @@ class User extends BaseUser
      */
     private $photoProfilUtilisateur;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Activites", mappedBy="users")
+     */
+    private $activites;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sexeUtilisateur", type="string", length=1)
+     * @ORM\OneToMany(targetEntity="Commentaires", mappedBy="users")
      */
-    private $sexeUtilisateur;
+    private $commentaires;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="facebookUtilisateur", type="string", length=255, nullable=true)
-     */
-    private $facebookUtilisateur;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="twitterUtilisateur", type="string", length=255, nullable=true)
-     */
-    private $twitterUtilisateur;
 
     public function __construct()
     {

@@ -84,6 +84,33 @@ class Series
      */
     private $diffusionSerie;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Saisons", mappedBy="series")
+     */
+    private $saisons;
+
+    /**
+    * @var string
+    *
+    * @ORM\OneToMany(targetEntity="Episodes", mappedBy="series")
+    */
+    private $episodes;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Acteurs")
+    */
+    private $acteurs;
+
+    /**
+    * @var string
+    *
+    * @ORM\OneToMany(targetEntity="Commentaires", mappedBy="series")
+    */
+    private $commentaires;
 
     /**
      * Get id

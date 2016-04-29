@@ -28,6 +28,27 @@ class Activites
      */
     private $dateActivite;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Commentaires", inversedBy="activites")
+     */
+    private $commentaires;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="activites")
+     */
+    private $users;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Episodes", inversedBy="activites")
+     */
+    private $episodes;
+
 
     /**
      * Get id

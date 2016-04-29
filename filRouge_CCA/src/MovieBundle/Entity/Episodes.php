@@ -70,6 +70,54 @@ class Episodes
      */
     private $diffusionEpisode;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Series", inversedBy="episodes")
+     */
+    private $series;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Saisons", inversedBy="episodes")
+     */
+    private $saisons;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Acteurs")
+    */
+    private $acteurs;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Realisateurs")
+    */
+    private $realisateurs;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Scenaristes")
+    */
+    private $scenaristes;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Activites", mappedBy="episodes")
+     */
+    private $activites;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Commentaires", mappedBy="episodes")
+     */
+    private $commentaires;
 
     /**
      * Get id

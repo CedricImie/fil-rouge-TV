@@ -42,6 +42,34 @@ class Commentaires
      */
     private $noteMoyenneCommentaire;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Activites", mappedBy="commentaires")
+     */
+    private $activites;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Episodes", inversedBy="commentaires")
+     */
+    private $episodes;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Series", inversedBy="commentaires")
+     */
+    private $series;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="commentaires")
+     */
+    private $users;
+
 
     /**
      * Get id
