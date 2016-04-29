@@ -14,4 +14,20 @@ class DefaultController extends Controller
     {
         return $this->render('MovieBundle:Default:index.html.twig');
     }
+
+    /**
+     * @Route("/")
+     */
+    public function headerAction()
+    {
+        return $this->render('MovieBundle:Default:header.html.twig');
+    }
+
+    /**
+     * @Route("/")
+     */
+    public function footerAction()
+    {
+        return $this->render('MovieBundle:Default:footer.html.twig');
+    }
 }

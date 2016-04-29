@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}TalkSeries{% endblock %}
+{% block body %}
+
+<div class="header">
+  <!-- *** Logo *** -->
+  <div class="row-H1">
+    <div class="logo">
+      <a href="http://127.0.0.1:8000"><img src="{{ asset ('/images/Logo.jpg') }}" alt="Logo du site" /></a>
+    </div>
+    <!-- *** Login *** -->
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+      <div class="form-group form-group-sm">
+        <div class="login">
+          <input class="form-control" type="text" name="login" placeholder="Identifiant">
+        </div>
+        <div class="password">
+          <input class="form-control" type="text" name="password" placeholder="Mot de passe">
+        </div>
+      </div>
+      <div class="btnConnInsc">
+        <button class="btn btn-default btn-sm" type="button" name="btnConnexion">Connexion</button>
+        <button class="btn btn-default btn-sm" type="button" name="btnSub">Inscription</button>
+      </div>
+    </div>
+  </div>
+  <!-- *** Language *** -->
+  <div class="row-H2">
+    <div class="col-md-1">
+      <button class="btn btn-default btn-xs" type="button" name="btnFr">Fr</button>
+      <button class="btn btn-default btn-xs" type="button" name="btnEn">En</button>
+    </div>
+    <div class="col-md-10"></div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+{% endblock %}

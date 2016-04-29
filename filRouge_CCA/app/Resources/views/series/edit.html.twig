@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+{{ render(controller('MovieBundle:Default:header')) }}
+
     <h1>Series edit</h1>
 
     {{ form_start(edit_form) }}
@@ -18,4 +21,7 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+
+{{ render(controller('MovieBundle:Default:footer')) }}
+
 {% endblock %}
