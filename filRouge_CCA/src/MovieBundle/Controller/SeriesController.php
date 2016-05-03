@@ -26,7 +26,7 @@ class SeriesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $series = $em->getRepository('MovieBundle:Series')->findAll();
+        $series = $em->getRepository('MovieBundle:Series')->getAll();
 
         return $this->render('series/index.html.twig', array(
             'series' => $series,

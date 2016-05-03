@@ -49,13 +49,6 @@ class Acteurs
      */
     private $bioActeur;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="serieActeur", type="string", length=255, nullable=true)
-     */
-    private $serieActeur;
-
 
     /**
      * Get id
@@ -161,30 +154,6 @@ class Acteurs
     public function getBioActeur()
     {
         return $this->bioActeur;
-    }
-
-    /**
-     * Set serieActeur
-     *
-     * @param string $serieActeur
-     *
-     * @return Acteurs
-     */
-    public function setSerieActeur($serieActeur)
-    {
-        $this->serieActeur = $serieActeur;
-
-        return $this;
-    }
-
-    /**
-     * Get serieActeur
-     *
-     * @return string
-     */
-    public function getSerieActeur()
-    {
-        return $this->serieActeur;
     }
 }
 

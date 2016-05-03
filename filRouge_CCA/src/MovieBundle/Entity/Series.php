@@ -85,6 +85,41 @@ class Series
     private $diffusionSerie;
 
     /**
+     * @var \Boolean
+     *
+     * @ORM\Column(name="validation", type="boolean", nullable=false)
+     */
+    private $validation;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Saisons", mappedBy="series")
+     */
+    private $saisons;
+
+    /**
+    * @var string
+    *
+    * @ORM\OneToMany(targetEntity="Episodes", mappedBy="series")
+    */
+    private $episodes;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Acteurs")
+    */
+    private $acteurs;
+
+    /**
+    * @var string
+    *
+    * @ORM\OneToMany(targetEntity="Commentaires", mappedBy="series")
+    */
+    private $commentaires;
+
+    /**
      * Get id
      *
      * @return int
@@ -115,6 +150,7 @@ class Series
      */
     public function getNomSerie()
     {
+        $this->validation = 0; // met la valeur de "validation" à 0 par défaut à la création de la série
         return $this->nomSerie;
     }
 
@@ -309,5 +345,35 @@ class Series
     {
         return $this->diffusionSerie;
     }
-}
 
+    /**
+     * Set validation
+     *
+     * @param \Boolean $validation
+     *
+     * @return Series
+     */
+    public function setValidation()
+    {
+        if($validation >1 || $validation <0 || $validation == 1)
+        {
+            $this->validation = 0;
+        }
+        else
+        {
+            $this->validation =1;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get validation
+     *
+     * @return \Boolean
+     */
+    public function getvalidation()
+    {
+        return $this->validation;
+    }
+}

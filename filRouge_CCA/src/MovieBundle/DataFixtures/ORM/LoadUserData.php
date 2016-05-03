@@ -15,7 +15,6 @@ class LoadUserData implements FixtureInterface
         $userAdmin->setUsername('admin');
         $userAdmin->setPrenomUtilisateur('admin');
         $userAdmin->setNomUtilisateur('admin');
-        $userAdmin->setSexeUtilisateur('M');
         $userAdmin->setPassword('test');
         $userAdmin->setEmail('admin@talkseries.fr');
 

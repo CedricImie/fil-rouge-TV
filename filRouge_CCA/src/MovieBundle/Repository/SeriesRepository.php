@@ -10,4 +10,27 @@ namespace MovieBundle\Repository;
  */
 class SeriesRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getAll() // récupère et affiche les séries dont les champs "validation" sont à 1
+	{
+	  $qb = $this->createQueryBuilder('a');
+
+	  $qb
+	    ->where('a.validation = 1');
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult();
+	}
+
+	public function getAllHide() // récupère et affiche les séries dont les champs "validation" sont à 0 (pour les modos)
+	{
+	  $qb = $this->createQueryBuilder('a');
+
+	  $qb
+	    ->where('a.validation = 0');
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult();
+	}
 }

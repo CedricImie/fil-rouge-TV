@@ -64,6 +64,27 @@ class Saisons
     private $diffusionSaison;
 
     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Series", inversedBy="saisons")
+     */
+    private $series;
+
+    /**
+    * @var string
+    *
+    * @ORM\OneToMany(targetEntity="Episodes", mappedBy="saisons")
+    */
+    private $episodes;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Acteurs")
+    */
+    private $acteurs;
+
+    /**
      * Get id
      *
      * @return int

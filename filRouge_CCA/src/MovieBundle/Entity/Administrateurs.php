@@ -21,6 +21,13 @@ class Administrateurs
      */
     private $id;
 
+    /**
+    * @var string
+    *
+    * @ORM\OneToMany(targetEntity="Moderateurs", mappedBy="administrateurs")
+    */
+    private $moderateurs;
+
 
     /**
      * Get id

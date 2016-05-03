@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}TalkSeries{% endblock %}
 {% block body %}
 
 {{ render(controller('MovieBundle:Default:header')) }}
 
-    <h1>Series creation</h1>
+<div class="btnNewSerie">
+    <a href="{{ path('series_index') }}" class="btn btn-default">Retour à la liste des séries</a>
+</div>
+
+<div class="H1NewSerie">
+    <h1>Nouvelle série</h1>
+</div>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('series_index') }}">Back to the list</a>
-        </li>
-    </ul>
 
 {{ render(controller('MovieBundle:Default:footer')) }}
 

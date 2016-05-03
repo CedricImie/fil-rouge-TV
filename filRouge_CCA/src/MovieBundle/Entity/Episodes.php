@@ -85,6 +85,41 @@ class Episodes
     private $saisons;
 
     /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Acteurs")
+    */
+    private $acteurs;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Realisateurs")
+    */
+    private $realisateurs;
+
+    /**
+    * @var string
+    *
+    * @ORM\ManyToMany(targetEntity="Scenaristes")
+    */
+    private $scenaristes;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Activites", mappedBy="episodes")
+     */
+    private $activites;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Commentaires", mappedBy="episodes")
+     */
+    private $commentaires;
+
+    /**
      * Get id
      *
      * @return int
