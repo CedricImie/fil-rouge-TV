@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}TalkSeries{% endblock %}
+{% block body %}
+
+
+<!-- *** Main *** -->
+<div class="main">
+  <div class="row-M1">
+    <div class="col-md-4 col-md-offset-4">
+      <input class="form-control input-lg" type="text" name="search" placeholder="Recherche">
+    </div>
+  </div>
+  <div class="row-M2">
+    <div class="btnSeriesForum">
+      <div class="col-md-8 col-md-offset-2">
+        <a href="http://127.0.0.1:8000/series/" class="btn btn-default btn-lg" style="display: inline-block; width: 49%">Séries</a>
+        <a href="http://talkfofo.forumactif.org/" class="btn btn-default btn-lg" target="_blank" style="display: inline-block; width: 49%">Forum</a>
+      </div>
+    </div>
+  </div>
+    <div class="carouselCommentaires">
+      <div class="col-md-7">
+        <div class="carousel">
+<!-- *** Carousel *** -->
+          <div id="my_carousel" class="carousel slide" data-ride="carousel">
+          	<!-- Slides -->
+          	<div class="carousel-inner">
+            	<!-- Page 1 -->
+            	<div class="item active">
+              	<div class="carousel-page">
+              	  <img src="/images/01.jpg" class="img-responsive" />
+              	</div>
+            	</div>
+            	<!-- Page 2 -->
+            	<div class="item">
+              	<div class="carousel-page">
+                  <img src="/images/02.jpg" class="img-responsive" />
+                </div>
+            	</div>
+            	<!-- Page 3 -->
+            	<div class="item">
+              	<div class="carousel-page">
+              	  <img src="/images/03.jpg" class="img-responsive" />
+              	</div>
+            	</div>
+              <!-- Page 4 -->
+            	<div class="item">
+              	<div class="carousel-page">
+              	  <img src="/images/04.jpg" class="img-responsive" />
+              	</div>
+            	</div>
+          	</div>
+          	<!-- Contrôles -->
+          	<a class="left carousel-control" href="#my_carousel" data-slide="prev">
+          	  <span class="glyphicon glyphicon-chevron-left"></span>
+          	</a>
+          	<a class="right carousel-control" href="#my_carousel" data-slide="next">
+          	  <span class="glyphicon glyphicon-chevron-right"></span>
+          	</a>
+        	</div>
+<!-- *** Carousel end *** -->
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="commentaires">
+          Commentaires
+        </div>
+      </div>
+    </div>
+</div>
+<!-- *** Footer *** -->
+{% endblock %}

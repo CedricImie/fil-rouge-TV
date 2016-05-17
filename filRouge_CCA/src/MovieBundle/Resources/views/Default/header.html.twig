@@ -1,0 +1,60 @@
+
+{% block body %}
+
+<div class="header">
+  <!-- *** Logo *** -->
+  <div class="row-H1">
+    <div class="col-md-12">
+      <div class="logo">
+        <a href="http://127.0.0.1:8000"><img src="{{ asset ('/images/Logo.jpg') }}" alt="Logo du site" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="row-H2">
+    <div class="col-md-12">
+      <button class="btn btn-default btn-xs" type="button" name="btnFr">Fr</button>
+      <button class="btn btn-default btn-xs" type="button" name="btnEn">En</button>
+
+<!-- *** Login *** -->
+      <div class="pull-right">
+          <div>
+              {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                  <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default">
+                      {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                  </a>
+              {% else %}
+                  <a href="{{ path('fos_user_security_login') }}" class="btn btn-default">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+              {% endif %}
+          </div>
+
+          {% if app.request.hasPreviousSession %}
+              {% for type, messages in app.session.flashbag.all() %}
+                  {% for message in messages %}
+                      <div class="flash-{{ type }}">
+                          {{ message }}
+                      </div>
+                  {% endfor %}
+              {% endfor %}
+          {% endif %}
+
+          <div>
+              {% block fos_user_content %}
+              {% endblock fos_user_content %}
+          </div>
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <div>
+            <a href="http://127.0.0.1:8000/profil" class="btn btn-default pull-right">Profil</a>
+          </div>
+          {% else %}
+          <div>
+            <a href="http://127.0.0.1:8000/register" class="btn btn-default pull-right">S'inscrire</a>
+          </div>
+          {% endif %}
+      </div>
+<!-- *** Login End *** -->
+    </div>
+  </div>
+</div>
+
+{% endblock %}
