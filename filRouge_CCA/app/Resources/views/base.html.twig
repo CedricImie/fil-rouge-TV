@@ -12,12 +12,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}
+        {% include "MovieBundle:Default:header.html.twig" %}
+        {% block body %}{% endblock %}
+        {% include "MovieBundle:Default:footer.html.twig" %}
 
-        {{ render(controller('MovieBundle:Default:header')) }}
-        {{ render(controller('MovieBundle:Default:footer')) }}
-
-        {% endblock %}
         {% block javascripts %}{% endblock %}
+
     </body>
 </html>

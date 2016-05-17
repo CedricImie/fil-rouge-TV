@@ -16,6 +16,49 @@ class SeriesRepository extends \Doctrine\ORM\EntityRepository
 
 	  $qb
 	    ->where('a.validation = 1');
+	  $qb
+	    ->orderBy('a.nomSerie', 'ASC');
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult();
+	}
+
+	public function selectLast($serie) // sélectionne la série non modifiée pendant qu'elle est en cours de validation
+	{
+	  $qb = $this->createQueryBuilder('a');
+
+	    $qb
+	    ->where('a.nomSerie = :nomSerie')
+	    ->setParameter(":nomSerie", $serie)
+	    ->orderBy('a.dateAjout', 'ASC')
+	    ->setMaxResults('1');
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult();
+	}
+
+	public function findName($serie) // sélectionne la série par son nom
+	{
+		$qb = $this->createQueryBuilder('a');
+
+	    $qb
+	    ->where('a.nomSerie = :nomSerie')
+	    ->setParameter(":nomSerie", $serie);
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult();
+	}
+
+	public function findAll() // sélectionne toutes les séries triées par leur validation
+	{
+	  $qb = $this->createQueryBuilder('a');
+
+	  $qb
+	    ->orderBy('a.validation', 'ASC');
+	  
 
 	  return $qb
 	    ->getQuery()

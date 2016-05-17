@@ -24,12 +24,16 @@ class UserController extends Controller
      */
     public function indexAction()
     {
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+        $pseudo = $usr->getUsername();
+
         $em = $this->getDoctrine()->getManager();
 
         $users = $em->getRepository('MovieBundle:User')->findAll();
 
         return $this->render('user/index.html.twig', array(
             'users' => $users,
+            'pseudo' => $pseudo,
         ));
     }
 
@@ -62,27 +66,89 @@ class UserController extends Controller
     /**
      * Finds and displays a User entity.
      *
-     * @Route("/{id}", name="user_show")
+     * @Route("/{username}", name="user_show")
      * @Method("GET")
      */
     public function showAction(User $user)
     {
-        $deleteForm = $this->createDeleteForm($user);
+        $usr = $this->get('security.token_storage')->getToken()->getUser(); // On récupère les infos de l'utilisateur courant
+        $pseudo = $usr->getUsername();
 
-        return $this->render('user/show.html.twig', array(
+       if($user->hasRole("ROLE_MODERATEUR"))
+        {
+            $modo="ROLE_MODERATEUR";
+            $deleteForm = $this->createDeleteForm($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->render('user/show.html.twig', array(
             'user' => $user,
+            'modo' => $modo,
             'delete_form' => $deleteForm->createView(),
+            'pseudo' => $pseudo,
         ));
+        }
+        elseif($user->hasRole("ROLE_ADMIN"))
+        {
+            $modo="ROLE_ADMIN";
+            $deleteForm = $this->createDeleteForm($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->render('user/show.html.twig', array(
+            'user' => $user,
+            'modo' => $modo,
+            'delete_form' => $deleteForm->createView(),
+            'pseudo' => $pseudo,
+        ));
+        }
+        elseif($user->hasRole("ROLE_SUPER_ADMIN"))
+        {
+            $modo="ROLE_SUPER_ADMIN";
+            $deleteForm = $this->createDeleteForm($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->render('user/show.html.twig', array(
+            'user' => $user,
+            'modo' => $modo,
+            'delete_form' => $deleteForm->createView(),
+            'pseudo' => $pseudo,
+        ));
+        }
+        else
+        {
+            $modo="";
+            $deleteForm = $this->createDeleteForm($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->render('user/show.html.twig', array(
+            'user' => $user,
+            'modo' => $modo,
+            'delete_form' => $deleteForm->createView(),
+            'pseudo' => $pseudo,
+        ));
+        } 
     }
 
     /**
      * Displays a form to edit an existing User entity.
      *
-     * @Route("/{id}/edit", name="user_edit")
+     * @Route("/{username}/edit", name="user_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, User $user)
     {
+
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('MovieBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
@@ -92,20 +158,64 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_edit', array('username' => $user->getUsername()));
         }
 
-        return $this->render('user/edit.html.twig', array(
+        $usr = $this->get('security.token_storage')->getToken()->getUser();// On récupère les infos de l'utilisateur courant
+        $pseudo = $usr->getUsername();
+
+        if($pseudo === $user->getUsername())
+        {
+            return $this->render('user/edit.html.twig', array(
             'user' => $user,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            ));
+        }
+        else
+        {
+        return $this->redirectToRoute('user_index');
+        }
+    }
+
+    /**
+     * Displays a form to promote an existing User entity.
+     *
+     * @Route("/{username}/promote", name="user_promote")
+     * @Method("GET")
+     */
+    public function promoteAction(User $user)
+    {
+        $user->addRole('ROLE_MODERATEUR');
+        $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+        return $this->redirectToRoute('user_show', array('username' => $user->getUsername())); 
+
+    }
+
+    /**
+     * Displays a form to promote an existing User entity.
+     *
+     * @Route("/{username}/unpromote", name="user_unpromote")
+     * @Method("GET")
+     */
+    public function unpromoteAction(User $user)
+    {
+        $user->removeRole('ROLE_MODERATEUR');
+        $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+        return $this->redirectToRoute('user_show', array('username' => $user->getUsername())); 
+
     }
 
     /**
      * Deletes a User entity.
      *
-     * @Route("/{id}", name="user_delete")
+     * @Route("/{username}", name="user_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, User $user)
@@ -132,7 +242,7 @@ class UserController extends Controller
     private function createDeleteForm(User $user)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
+            ->setAction($this->generateUrl('user_delete', array('username' => $user->getUsername())))
             ->setMethod('DELETE')
             ->getForm()
         ;

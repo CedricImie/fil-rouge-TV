@@ -1,9 +1,34 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}TalkSeries{% endblock %}
 {% block body %}
     <h1>User edit</h1>
 
     {{ form_start(edit_form) }}
+        <div class="form-inline">
+            {{ form_label(edit_form.username) }}
+            {{ form_widget(edit_form.username, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(edit_form.prenomUtilisateur) }}
+            {{ form_widget(edit_form.prenomUtilisateur, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(edit_form.nomUtilisateur) }}
+            {{ form_widget(edit_form.nomUtilisateur, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(edit_form.email) }}
+            {{ form_widget(edit_form.email, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(edit_form.dateNaissanceUtilisateur) }}
+            {{ form_widget(edit_form.dateNaissanceUtilisateur, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(edit_form.photoProfilUtilisateur) }}
+            {{ form_widget(edit_form.photoProfilUtilisateur, {'attr': {'class': 'form-control' }}) }}
+        </div>
         {{ form_widget(edit_form) }}
         <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
@@ -11,6 +36,9 @@
     <ul>
         <li>
             <a href="{{ path('user_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('user_show', { 'username': user.username }) }}" class="btn btn-default">Revenir au profil</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

@@ -3,12 +3,12 @@
 {% block title %}TalkSeries{% endblock %}
 {% block body %}
 
-{{ render(controller('MovieBundle:Default:header')) }}
-
 <!-- *** Main *** -->
-    <div class="btnAddSerie">
-        <a href="{{ path('series_new') }}" class="btn btn-default">Ajouter une série</a>
-    </div>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div class="btnAddSerie">
+            <a href="{{ path('series_new') }}" class="btn btn-default">Ajouter une série</a>
+        </div>
+    {% endif %}
 
     <h1 class="H1series">Séries</h1>
 
@@ -20,24 +20,33 @@
                 <th>Note moyenne</th>
                 <th>Genre</th>
                 <th>Actions</th>
+                <th>Saisons</th>
             </tr>
         </thead>
         <tbody>
         {% for series in series %}
             <tr>
                 <td>{{ series.nomSerie }}</td>
-                <td><img src="{{ series.posterSerie }}" alt=""</td>
+                <td><img src="{{ series.posterSerie }}" alt=""/></td>
                 <td>{{ series.noteMoyenneSerie }}</td>
                 <td>{{ series.genreSerie }}</td>
                 <td>
-                    <a href="{{ path('series_show', { 'id': series.id }) }}" class="btn btn-default btn-xs">Détails</a>
-                    <a href="{{ path('series_edit', { 'id': series.id }) }}" class="btn btn-default btn-xs">Editer</a>
+                    <a href="{{ path('series_show', { 'nomSerie': series.nomSerie }) }}" class="btn btn-default btn-xs">Détails</a>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                      <a href="{{ path('series_edit', { 'nomSerie': series.nomSerie }) }}" class="btn btn-default btn-xs">Editer</a>
+                    {% endif %}
                 </td>
+                <td>
+                    <a href="{{ path('saisons_index', { 'nomSerie': series.nomSerie }) }}" class="btn btn-default btn-xs">Liste des saisons</a>
+                </td>
+                {% if series.validation == 0 %}
+                    <td>
+                        <a href="{{ path('series_show', { 'nomSerie': series.nomSerie }) }}" class="btn btn-default btn-xs">A valider</a>
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-{{ render(controller('MovieBundle:Default:footer')) }}
 
 {% endblock %}

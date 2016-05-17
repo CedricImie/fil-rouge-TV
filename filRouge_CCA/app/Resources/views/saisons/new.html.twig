@@ -1,12 +1,35 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}TalkSeries{% endblock %}
 {% block body %}
-    <h1>Saisons creation</h1>
+    <h1 class="H1SaisonNew">Nouvelle saison</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div class="form">
+        {{ form_start(form) }}
+            <div class="form-inline">
+                {{ form_label(form.nomSaison) }}
+                {{ form_widget(form.nomSaison, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(form.nbEpisodeSaison) }}
+                {{ form_widget(form.nbEpisodeSaison, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(form.dureeSaison) }}
+                {{ form_widget(form.dureeSaison, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(form.castingSaison) }}
+                {{ form_widget(form.castingSaison, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(form.diffusionSaison) }}
+                {{ form_widget(form.diffusionSaison, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            {{ form_widget(form) }}
+            <input type="submit" value="Create" />
+        {{ form_end(form) }}
+    </div>
 
     <ul>
         <li>

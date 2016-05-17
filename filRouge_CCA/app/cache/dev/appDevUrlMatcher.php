@@ -508,9 +508,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/s')) {
-            if (0 === strpos($pathinfo, '/saisons')) {
+            if (0 === strpos($pathinfo, '/series')) {
                 // saisons_index
-                if (rtrim($pathinfo, '/') === '/saisons') {
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)/saisons/?$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
                         goto not_saisons_index;
@@ -520,23 +520,23 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         return $this->redirect($pathinfo.'/', 'saisons_index');
                     }
 
-                    return array (  '_controller' => 'MovieBundle\\Controller\\SaisonsController::indexAction',  '_route' => 'saisons_index',);
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'saisons_index')), array (  '_controller' => 'MovieBundle\\Controller\\SaisonsController::indexAction',));
                 }
                 not_saisons_index:
 
                 // saisons_new
-                if ($pathinfo === '/saisons/new') {
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)/saisons/new$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                         goto not_saisons_new;
                     }
 
-                    return array (  '_controller' => 'MovieBundle\\Controller\\SaisonsController::newAction',  '_route' => 'saisons_new',);
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'saisons_new')), array (  '_controller' => 'MovieBundle\\Controller\\SaisonsController::newAction',));
                 }
                 not_saisons_new:
 
                 // saisons_show
-                if (preg_match('#^/saisons/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)/saisons/(?P<nomSaison>[^/]++)$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
                         goto not_saisons_show;
@@ -547,7 +547,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_saisons_show:
 
                 // saisons_edit
-                if (preg_match('#^/saisons/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)/saisons/(?P<nomSaison>[^/]++)/edit$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                         goto not_saisons_edit;
@@ -558,7 +558,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_saisons_edit:
 
                 // saisons_delete
-                if (preg_match('#^/saisons/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)/saisons/(?P<nomSaison>[^/]++)$#s', $pathinfo, $matches)) {
                     if ($this->context->getMethod() != 'DELETE') {
                         $allow[] = 'DELETE';
                         goto not_saisons_delete;
@@ -660,7 +660,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_series_new:
 
                 // series_show
-                if (preg_match('#^/series/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
                         goto not_series_show;
@@ -670,8 +670,30 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
                 not_series_show:
 
+                // series_valid
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)/valid$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_series_valid;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'series_valid')), array (  '_controller' => 'MovieBundle\\Controller\\SeriesController::validAction',));
+                }
+                not_series_valid:
+
+                // series_invalid
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)/invalid$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_series_invalid;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'series_invalid')), array (  '_controller' => 'MovieBundle\\Controller\\SeriesController::invalidAction',));
+                }
+                not_series_invalid:
+
                 // series_edit
-                if (preg_match('#^/series/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)/edit$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                         goto not_series_edit;
@@ -682,7 +704,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_series_edit:
 
                 // series_delete
-                if (preg_match('#^/series/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/series/(?P<nomSerie>[^/]++)/delete$#s', $pathinfo, $matches)) {
                     if ($this->context->getMethod() != 'DELETE') {
                         $allow[] = 'DELETE';
                         goto not_series_delete;
@@ -724,7 +746,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_user_new:
 
             // user_show
-            if (preg_match('#^/user/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/user/(?P<username>[^/]++)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_user_show;
@@ -735,7 +757,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_user_show:
 
             // user_edit
-            if (preg_match('#^/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/user/(?P<username>[^/]++)/edit$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_user_edit;
@@ -745,8 +767,30 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_user_edit:
 
+            // user_promote
+            if (preg_match('#^/user/(?P<username>[^/]++)/promote$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_user_promote;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_promote')), array (  '_controller' => 'MovieBundle\\Controller\\UserController::promoteAction',));
+            }
+            not_user_promote:
+
+            // user_unpromote
+            if (preg_match('#^/user/(?P<username>[^/]++)/unpromote$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_user_unpromote;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_unpromote')), array (  '_controller' => 'MovieBundle\\Controller\\UserController::unpromoteAction',));
+            }
+            not_user_unpromote:
+
             // user_delete
-            if (preg_match('#^/user/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/user/(?P<username>[^/]++)$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'DELETE') {
                     $allow[] = 'DELETE';
                     goto not_user_delete;

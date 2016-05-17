@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}TalkSeries{% endblock %}
 {% block body %}
-    <h1>User</h1>
+    <h1>{{ user.username }}{% if modo == "ROLE_MODERATEUR" %}<span> est modérateur</span>{% endif %}</h1>
 
     <table>
         <tbody>
@@ -11,8 +12,9 @@
             </tr>
             <tr>
                 <th>Pseudoutilisateur</th>
-                <td>{{ user.pseudoUtilisateur }}</td>
+                <td>{{ user.username }}</td>
             </tr>
+            {% if is_granted("ROLE_MODERATEUR") or (pseudo == user.username) %}
             <tr>
                 <th>Prenomutilisateur</th>
                 <td>{{ user.prenomUtilisateur }}</td>
@@ -23,8 +25,9 @@
             </tr>
             <tr>
                 <th>Adresseemailutilisateur</th>
-                <td>{{ user.adresseEmailUtilisateur }}</td>
+                <td>{{ user.email }}</td>
             </tr>
+            {% endif %}
             <tr>
                 <th>Datenaissanceutilisateur</th>
                 <td>{% if user.dateNaissanceUtilisateur %}{{ user.dateNaissanceUtilisateur|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -33,22 +36,7 @@
                 <th>Photoprofilutilisateur</th>
                 <td>{{ user.photoProfilUtilisateur }}</td>
             </tr>
-            <tr>
-                <th>Motdepasseutilisateur</th>
-                <td>{{ user.motDePasseUtilisateur }}</td>
-            </tr>
-            <tr>
-                <th>Sexeutilisateur</th>
-                <td>{{ user.sexeUtilisateur }}</td>
-            </tr>
-            <tr>
-                <th>Facebookutilisateur</th>
-                <td>{{ user.facebookUtilisateur }}</td>
-            </tr>
-            <tr>
-                <th>Twitterutilisateur</th>
-                <td>{{ user.twitterUtilisateur }}</td>
-            </tr>
+
         </tbody>
     </table>
 
@@ -56,13 +44,35 @@
         <li>
             <a href="{{ path('user_index') }}">Back to the list</a>
         </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-        </li>
-        <li>
+
+            {% if pseudo == user.username %}
+            <li>
+                <a href="{{ path('user_edit', { 'username': user.username }) }}">Edit</a>
+            </li>
+            {% endif %}
+
+        {% if is_granted("ROLE_MODERATEUR") %}
+
+            {% if modo != "ROLE_MODERATEUR" and modo != "ROLE_ADMIN" %}<li><a href="{{ path('user_promote', { 'username': user.username }) }}" class="btn btn-default">Promote moderator</a></li>{% endif %}
+
+
+            {% if modo == "ROLE_MODERATEUR" %}<li><a href="{{ path('user_unpromote', { 'username': user.username }) }}" class="btn btn-default">Unpromote moderator</a></li>{% endif %}
+
+        {% endif %}
+
+        {% if is_granted("ROLE_MODERATEUR") or pseudo == user.username %}
+
+            {% if modo != "ROLE_ADMIN" and modo != "ROLE_SUPER_ADMIN"%}
+
+            <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
+            </li>
+
+            {% endif %}
+
+        {% endif %}
+
     </ul>
 {% endblock %}

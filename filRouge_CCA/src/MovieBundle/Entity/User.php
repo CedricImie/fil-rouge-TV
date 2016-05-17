@@ -8,7 +8,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MovieBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
@@ -23,14 +23,14 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomUtilisateur", type="string", length=255)
+     * @ORM\Column(name="prenomUtilisateur", type="string", length=255, nullable=true)
      */
     private $prenomUtilisateur;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomUtilisateur", type="string", length=255)
+     * @ORM\Column(name="nomUtilisateur", type="string", length=255, nullable=true)
      */
     private $nomUtilisateur;
 

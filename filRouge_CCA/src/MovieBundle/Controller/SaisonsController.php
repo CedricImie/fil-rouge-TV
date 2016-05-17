@@ -7,12 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MovieBundle\Entity\Saisons;
+use MovieBundle\Entity\Series;
 use MovieBundle\Form\SaisonsType;
 
 /**
  * Saisons controller.
  *
- * @Route("/saisons")
+ * @Route("series/{nomSerie}/saisons")
  */
 class SaisonsController extends Controller
 {
@@ -27,9 +28,11 @@ class SaisonsController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $saisons = $em->getRepository('MovieBundle:Saisons')->findAll();
+        $series = $em->getRepository('MovieBundle:Series')->findAll();
 
         return $this->render('saisons/index.html.twig', array(
             'saisons' => $saisons,
+            'series' => $series,
         ));
     }
 
@@ -62,7 +65,7 @@ class SaisonsController extends Controller
     /**
      * Finds and displays a Saisons entity.
      *
-     * @Route("/{id}", name="saisons_show")
+     * @Route("/{nomSaison}", name="saisons_show")
      * @Method("GET")
      */
     public function showAction(Saisons $saison)
@@ -78,7 +81,7 @@ class SaisonsController extends Controller
     /**
      * Displays a form to edit an existing Saisons entity.
      *
-     * @Route("/{id}/edit", name="saisons_edit")
+     * @Route("/{nomSaison}/edit", name="saisons_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Saisons $saison)
@@ -92,7 +95,7 @@ class SaisonsController extends Controller
             $em->persist($saison);
             $em->flush();
 
-            return $this->redirectToRoute('saisons_edit', array('id' => $saison->getId()));
+            return $this->redirectToRoute('saisons_edit', array('nomSaison' => $saison->getNomSaison()));
         }
 
         return $this->render('saisons/edit.html.twig', array(
@@ -105,7 +108,7 @@ class SaisonsController extends Controller
     /**
      * Deletes a Saisons entity.
      *
-     * @Route("/{id}", name="saisons_delete")
+     * @Route("/{nomSaison}", name="saisons_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Saisons $saison)
@@ -132,7 +135,7 @@ class SaisonsController extends Controller
     private function createDeleteForm(Saisons $saison)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('saisons_delete', array('id' => $saison->getId())))
+            ->setAction($this->generateUrl('saisons_delete', array('nomSaison' => $saison->getNomSaison())))
             ->setMethod('DELETE')
             ->getForm()
         ;

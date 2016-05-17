@@ -1,49 +1,49 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}TalkSeries{% endblock %}
 {% block body %}
-    <h1>Saisons list</h1>
+
+    <div class="btnNewSerie">
+        <a href="{{ path('series_index') }}" class="btn btn-default">Retour à la liste des séries</a>
+    </div>
+
+    <h1 class="H1Saisons">Liste des saisons</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nomsaison</th>
-                <th>Nbepisodesaison</th>
-                <th>Dureesaison</th>
-                <th>Notemoyennesaison</th>
-                <th>Castingsaison</th>
-                <th>Diffusionsaison</th>
+                <th>Nom de la saison</th>
+                <th>Nb d'épisodes</th>
+                <th>Note moyenne</th>
+                <th>Casting</th>
+                <th>Date de diffusion</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+        {% for serie in series %}
         {% for saison in saisons %}
+
             <tr>
-                <td><a href="{{ path('saisons_show', { 'id': saison.id }) }}">{{ saison.id }}</a></td>
                 <td>{{ saison.nomSaison }}</td>
                 <td>{{ saison.nbEpisodeSaison }}</td>
-                <td>{{ saison.dureeSaison }}</td>
                 <td>{{ saison.noteMoyenneSaison }}</td>
                 <td>{{ saison.castingSaison }}</td>
-                <td>{% if saison.diffusionSaison %}{{ saison.diffusionSaison|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if saison.diffusionSaison %}{{ saison.diffusionSaison|date('Y-m-d') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('saisons_show', { 'id': saison.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('saisons_edit', { 'id': saison.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                      <a href="{{ path('saisons_show', { 'nomSaison': saison.nomSaison, 'nomSerie': serie.nomSerie }) }}" class="btn btn-default btn-xs">Détails</a>
+                      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                          <a href="{{ path('saisons_edit', { 'nomSaison': saison.nomSaison, 'nomSerie': serie.nomSerie }) }}" class="btn btn-default btn-xs">Edit</a>
+                      {% endif %}
                 </td>
             </tr>
         {% endfor %}
+        {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('saisons_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    {% for serie in series %}
+        <div class="btnAddSaison">
+            <a href="{{ path('saisons_new', { 'nomSerie': serie.nomSerie }) }}" class="btn btn-default">Ajouter une saison</a>
+        </div>
+    {% endfor %}
 {% endblock %}

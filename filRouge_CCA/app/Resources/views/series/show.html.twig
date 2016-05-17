@@ -3,60 +3,123 @@
 {% block title %}TalkSeries{% endblock %}
 {% block body %}
 
-{{ render(controller('MovieBundle:Default:header')) }}
-
 <div class="H1serie">
-    <h1>{{ series.nomSerie }}</h1>
+      {% if taille > 1 %}
+        <h1>{{ series.nomSerie }} est en cours de validation</h1>
+      {% else %}
+        <h1>{{ series.nomSerie }}</h1>
+      {% endif %}
 </div>
 
 <div class="btnSerie">
     <a href="{{ path('series_index') }}" class="btn btn-default">Liste des séries</a>
-    <a href="{{ path('series_edit', { 'id': series.id }) }}" class="btn btn-default">Editer</a>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+      {% if taille < 2 %}
+        <a href="{{ path('series_edit', { 'nomSerie': series.nomSerie }) }}" class="btn btn-default">Editer</a>
+      {% endif %}
+    {% endif %}
+    {% if is_granted("ROLE_MODERATEUR") %}
+        {% if series.validation == 0 %}
+            <a href="{{ path('series_valid', { 'nomSerie': series.nomSerie }) }}" class="btn btn-default">Valider les modifications</a>
+            <a href="{{ path('series_invalid', { 'nomSerie': series.nomSerie }) }}" class="btn btn-default">Invalider les modifications</a>
+        {% endif %}
+    {% endif %}
 </div>
+
 {{ form_start(delete_form) }}
 {{ form_end(delete_form) }}
+
+{% if is_granted("ROLE_MODERATEUR") and series.validation == 0 %}
 
 <table>
     <tbody>
         <tr>
             <th>Nom de la série</th>
             <td>{{ series.nomSerie }}</td>
+            <th>Nom de la série</th>
+            <td>{{ oldSeriesObject.nomSerie }}</td>
         </tr>
         <tr>
             <th>Affiche</th>
-            <td><img src="{{ series.posterSerie }}"</td>
+            <td><img src="{{ series.posterSerie }}"></td>
+            <th>Affiche</th>
+            <td><img src="{{ oldSeriesObject.posterSerie }}"></td>
         </tr>
         <tr>
             <th>Résumé</th>
             <td>{{ series.resumeSerie }}</td>
-        </tr>
-        <tr>
-            <th>Date de création</th>
-            <td>{% if series.dateCreationSerie %}{{ series.dateCreationSerie|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <th>Résumé</th>
+            <td>{{ oldSeriesObject.resumeSerie }}</td>
         </tr>
         <tr>
             <th>Note moyenne</th>
             <td>{{ series.noteMoyenneSerie }}</td>
+            <th>Note moyenne</th>
+            <td>{{ oldSeriesObject.noteMoyenneSerie }}</td>
         </tr>
         <tr>
             <th>Nb d'abonnés</th>
             <td>{{ series.nbAbonneSerie }}</td>
+            <th>Nb d'abonnés</th>
+            <td>{{ oldSeriesObject.nbAbonneSerie }}</td>
         </tr>
         <tr>
             <th>Casting</th>
             <td>{{ series.castingSerie }}</td>
+            <th>Casting</th>
+            <td>{{ oldSeriesObject.castingSerie }}</td>
         </tr>
         <tr>
             <th>Genre</th>
             <td>{{ series.genreSerie }}</td>
+            <th>Genre</th>
+            <td>{{ oldSeriesObject.genreSerie }}</td>
         </tr>
         <tr>
             <th>Date de diffusion</th>
-            <td>{% if series.diffusionSerie %}{{ series.diffusionSerie|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if series.diffusionSerie %}{{ series.diffusionSerie|date('Y-m-d') }}{% endif %}</td>
+            <th>Date de diffusion</th>
+            <td>{% if oldSeriesObject.diffusionSerie %}{{ oldSeriesObject.diffusionSerie|date('Y-m-d') }}{% endif %}</td>
         </tr>
     </tbody>
 </table>
-
-{{ render(controller('MovieBundle:Default:footer')) }}
+{% else %}
+<table>
+    <tbody>
+        <tr>
+            <th>Nom de la série</th>
+            <td>{{ oldSeriesObject.nomSerie }}</td>
+        </tr>
+        <tr>
+            <th>Affiche</th>
+            <td><img src="{{ oldSeriesObject.posterSerie }}"></td>
+        </tr>
+        <tr>
+            <th>Résumé</th>
+            <td>{{ oldSeriesObject.resumeSerie }}</td>
+        </tr>
+        <tr>
+            <th>Note moyenne</th>
+            <td>{{ oldSeriesObject.noteMoyenneSerie }}</td>
+        </tr>
+        <tr>
+            <th>Nb d'abonnés</th>
+            <td>{{ oldSeriesObject.nbAbonneSerie }}</td>
+        </tr>
+        <tr>
+            <th>Casting</th>
+            <td>{{ oldSeriesObject.castingSerie }}</td>
+        </tr>
+        <tr>
+            <th>Genre</th>
+            <td>{{ oldSeriesObject.genreSerie }}</td>
+        </tr>
+        <tr>
+            <th>Date de diffusion</th>
+            <td>{% if oldSeriesObject.diffusionSerie %}{{ oldSeriesObject.diffusionSerie|date('Y-m-d') }}{% endif %}</td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
 
 {% endblock %}

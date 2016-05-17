@@ -24,7 +24,7 @@ class Series
     /**
      * @var string
      *
-     * @ORM\Column(name="nomSerie", type="string", length=255, unique=true)
+     * @ORM\Column(name="nomSerie", type="string", length=255)
      */
     private $nomSerie;
 
@@ -52,7 +52,7 @@ class Series
     /**
      * @var int
      *
-     * @ORM\Column(name="noteMoyenneSerie", type="integer")
+     * @ORM\Column(name="noteMoyenneSerie", type="integer", nullable=true)
      */
     private $noteMoyenneSerie;
 
@@ -90,6 +90,13 @@ class Series
      * @ORM\Column(name="validation", type="boolean", nullable=false)
      */
     private $validation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dateAjout", type="datetime")
+     */
+    private $dateAjout;
 
     /**
      * @var string
@@ -150,7 +157,6 @@ class Series
      */
     public function getNomSerie()
     {
-        $this->validation = 0; // met la valeur de "validation" à 0 par défaut à la création de la série
         return $this->nomSerie;
     }
 
@@ -353,16 +359,9 @@ class Series
      *
      * @return Series
      */
-    public function setValidation()
+    public function setValidation($validation)
     {
-        if($validation >1 || $validation <0 || $validation == 1)
-        {
-            $this->validation = 0;
-        }
-        else
-        {
-            $this->validation =1;
-        }
+        $this->validation = $validation;
 
         return $this;
     }
@@ -376,4 +375,29 @@ class Series
     {
         return $this->validation;
     }
+
+    /**
+     * Get dateAjout
+     *
+     * @return \DateTime
+     */
+    public function getDateAjout()
+    {
+        return $this->dateAjout;
+    }
+
+    /**
+     * Set dateAjout
+     *
+     * @param \DateTime $dateAjout
+     *
+     * @return Series
+     */
+    public function setDateAjout($dateAjout)
+    {
+        $this->dateAjout = $dateAjout;
+
+        return $this;
+    }
+    
 }

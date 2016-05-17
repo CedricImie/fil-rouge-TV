@@ -31,35 +31,35 @@ class Saisons
     /**
      * @var int
      *
-     * @ORM\Column(name="nbEpisodeSaison", type="integer")
+     * @ORM\Column(name="nbEpisodeSaison", type="integer", nullable=true)
      */
     private $nbEpisodeSaison;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="dureeSaison", type="integer")
+     * @ORM\Column(name="dureeSaison", type="integer", nullable=true)
      */
     private $dureeSaison;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="noteMoyenneSaison", type="integer")
+     * @ORM\Column(name="noteMoyenneSaison", type="integer", nullable=true)
      */
     private $noteMoyenneSaison;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="castingSaison", type="text")
+     * @ORM\Column(name="castingSaison", type="text", nullable=true)
      */
     private $castingSaison;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="diffusionSaison", type="datetime")
+     * @ORM\Column(name="diffusionSaison", type="datetime", nullable=true)
      */
     private $diffusionSaison;
 

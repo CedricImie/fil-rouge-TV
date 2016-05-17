@@ -3,28 +3,62 @@
 {% block title %}TalkSeries{% endblock %}
 {% block body %}
 
-{{ render(controller('MovieBundle:Default:header')) }}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <div class="btnEdit">
+        <a href="{{ path('series_index') }}" class="btn btn-default">Liste des séries</a>
+        <a href="{{ path('series_show', { 'nomSerie': seriesTemp.nomSerie }) }}" class="btn btn-default">Revenir aux détails</a>
+    </div>
 
-<div class="btnEdit">
-    <a href="{{ path('series_index') }}" class="btn btn-default">Liste des séries</a>
-    <a href="{{ path('series_show', { 'id': series.id }) }}" class="btn btn-default">Revenir aux détails</a>
-</div>
-
-<div class="H1Edit">
-    <h1>Editer la série</h1>
-</div>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-<div class="btnEditDel">
-    {{ form_start(delete_form) }}
-        <button type="submit" class="btn btn-danger">Supprimer</button>
-    {{ form_end(delete_form) }}
-</div>
-
-{{ render(controller('MovieBundle:Default:footer')) }}
+    <div class="H1SerieEdit">
+        <h1>Editer la série</h1>
+    </div>
+    <div class="form">
+        {{ form_start(edit_form) }}
+            <div class="form-inline">
+                {{ form_label(edit_form.nomSerie) }}
+                {{ form_widget(edit_form.nomSerie, {'attr': {'class': 'form-control', 'disabled':'disabled'}}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(edit_form.posterSerie) }}
+                {{ form_widget(edit_form.posterSerie, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(edit_form.resumeSerie) }}
+                {{ form_widget(edit_form.resumeSerie, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(edit_form.dateCreationSerie) }}
+                {{ form_widget(edit_form.dateCreationSerie, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(edit_form.castingSerie) }}
+                {{ form_widget(edit_form.castingSerie, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(edit_form.genreSerie) }}
+                {{ form_widget(edit_form.genreSerie, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="form-inline">
+                {{ form_label(edit_form.diffusionSerie) }}
+                {{ form_widget(edit_form.diffusionSerie, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            {{ form_widget(edit_form) }}
+            <input type="submit" value="Edit" />
+        {{ form_end(edit_form) }}
+    </div>
+    {% if is_granted("ROLE_MODERATEUR") %}
+    <div class="btnEditDel">
+        {{ form_start(delete_form) }}
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+        {{ form_end(delete_form) }}
+    </div>
+    {% endif %}
+{% else %}
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5">
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-info btn-lg" style="display: block; width: 100%;">Vous devez vous identifier</a>
+        </div>
+    </div>
+{% endif %}
 
 {% endblock %}

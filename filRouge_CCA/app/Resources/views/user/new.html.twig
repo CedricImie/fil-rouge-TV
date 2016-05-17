@@ -1,9 +1,34 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}TalkSeries{% endblock %}
 {% block body %}
     <h1>User creation</h1>
 
     {{ form_start(form) }}
+        <div class="form-inline">
+            {{ form_label(form.username) }}
+            {{ form_widget(form.username, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(form.prenomUtilisateur) }}
+            {{ form_widget(form.prenomUtilisateur, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(form.nomUtilisateur) }}
+            {{ form_widget(form.nomUtilisateur, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(form.dateNaissanceUtilisateur) }}
+            {{ form_widget(form.dateNaissanceUtilisateur, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="form-inline">
+            {{ form_label(form.photoProfilUtilisateur) }}
+            {{ form_widget(form.photoProfilUtilisateur, {'attr': {'class': 'form-control' }}) }}
+        </div>
         {{ form_widget(form) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
