@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ user.username }}{% if modo == "ROLE_MODERATEUR" %}<span> est modérateur</span>{% endif %}</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Pseudoutilisateur</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            {% if is_granted("ROLE_MODERATEUR") or (pseudo == user.username) %}
+            <tr>
+                <th>Prenomutilisateur</th>
+                <td>{{ user.prenomUtilisateur }}</td>
+            </tr>
+            <tr>
+                <th>Nomutilisateur</th>
+                <td>{{ user.nomUtilisateur }}</td>
+            </tr>
+            <tr>
+                <th>Adresseemailutilisateur</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <th>Datenaissanceutilisateur</th>
+                <td>{% if user.dateNaissanceUtilisateur %}{{ user.dateNaissanceUtilisateur|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Photoprofilutilisateur</th>
+                <td>{{ user.photoProfilUtilisateur }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_index') }}">Back to the list</a>
+        </li>
+        
+            {% if pseudo == user.username %}
+            <li>
+                <a href="{{ path('user_edit', { 'username': user.username }) }}">Edit</a>
+            </li>
+            {% endif %}
+        
+        {% if is_granted("ROLE_MODERATEUR") %}
+
+            {% if modo != "ROLE_MODERATEUR" and modo != "ROLE_ADMIN" %}<li><a href="{{ path('user_promote', { 'username': user.username }) }}" class="btn btn-default">Promote moderator</a></li>{% endif %}
+        
+        
+            {% if modo == "ROLE_MODERATEUR" %}<li><a href="{{ path('user_demote', { 'username': user.username }) }}" class="btn btn-default">Demote moderator</a></li>{% endif %}
+
+        {% endif %}
+
+        {% if is_granted("ROLE_MODERATEUR") or pseudo == user.username %}
+            
+            {% if modo != "ROLE_ADMIN" and modo != "ROLE_SUPER_ADMIN"%}
+
+            <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+            </li>
+
+            {% endif %}
+
+        {% endif %}
+        
+    </ul>
+{% endblock %}

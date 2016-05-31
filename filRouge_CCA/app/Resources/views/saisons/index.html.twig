@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Saisons list</h1>
+    <div class="btnSerie">
+        <a href="{{ path('series_index') }}" class="btn btn-default">Liste des séries</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomsaison</th>
+                <th>Nbepisodesaison</th>
+                <th>Dureesaison</th>
+                <th>Notemoyennesaison</th>
+                <th>Castingsaison</th>
+                <th>Diffusionsaison</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for saison in saisons %}
+        {% for serie in serie %}
+        
+            <tr>
+                <td><a href="{{ path('saisons_show', { 'nomSaison': saison.nomSaison, 'nomSerie': serie.nomSerie}) }}">{{ saison.nomSaison }}</a></td>
+                <td>{{ saison.nomSaison }}</td>
+                <td>{{ saison.nbEpisodeSaison }}</td>
+                <td>{{ saison.dureeSaison }}</td>
+                <td>{{ saison.noteMoyenneSaison }}</td>
+                <td>{{ saison.castingSaison }}</td>
+                <td>{% if saison.diffusionSaison %}{{ saison.diffusionSaison|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('saisons_show', { 'nomSaison': saison.nomSaison, 'nomSerie': serie.nomSerie }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('saisons_edit', { 'nomSaison': saison.nomSaison, 'nomSerie': serie.nomSerie }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% for serie in serie %}
+    <ul>
+        <li>
+            <a href="{{ path('saisons_new', { 'nomSerie': serie.nomSerie }) }}">Create a new entry</a>
+        </li>
+    </ul>
+    {% endfor %}
+{% endblock %}

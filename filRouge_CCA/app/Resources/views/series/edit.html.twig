@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TalkSeries{% endblock %}
+{% block body %}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <div class="btnEdit">
+        <a href="{{ path('series_index') }}" class="btn btn-default">Liste des séries</a>
+        <a href="{{ path('series_show', { 'nomSerie': seriesTemp.nomSerie }) }}" class="btn btn-default">Revenir aux détails</a>
+    </div>
+
+    <div class="H1Edit">
+        <h1>Editer la série</h1>
+    </div>
+        {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <input type="submit" value="Edit" />
+        {{ form_end(edit_form) }}
+    
+    {% if is_granted("ROLE_MODERATEUR") %}
+    <div class="btnEditDel">
+        {{ form_start(delete_form) }}
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+        {{ form_end(delete_form) }}
+    </div>
+    {% endif %}
+{% else %}
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5">
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-info btn-lg" style="display: block; width: 100%;">Vous devez vous identifier</a>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

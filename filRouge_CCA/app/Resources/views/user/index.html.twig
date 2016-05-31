@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>User list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pseudoutilisateur</th>
+                <!-- <th>Prenomutilisateur</th>
+                <th>Nomutilisateur</th>
+                <th>Adresseemailutilisateur</th> -->
+                <th>Datenaissanceutilisateur</th>
+                <th>Photoprofilutilisateur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'username': user.username }) }}">{{ user.id }}</a></td>
+                <td>{{ user.username }}</td>
+                <!-- <td>{{ user.prenomUtilisateur }}</td>
+                <td>{{ user.nomUtilisateur }}</td>           
+                <td>{{ user.email }}</td> -->
+                <td>{% if user.dateNaissanceUtilisateur %}{{ user.dateNaissanceUtilisateur|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ user.photoProfilUtilisateur }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_show', { 'username': user.username }) }}">show</a>
+                        </li>
+                        {% if pseudo == user.username %}
+                        <li>
+                            <a href="{{ path('user_edit', { 'username': user.username }) }}">edit</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
